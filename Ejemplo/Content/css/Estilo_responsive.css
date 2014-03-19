@@ -1,0 +1,35 @@
+﻿/*Escritorio*/
+@media(min-width:1200px) {
+
+}
+/*Escritorio pequeño o tablet*/
+@media(min-width:768px)and(max-width:979px) {
+
+}
+
+/*Tablet y smathphone*/
+@media(max-width:767px) {
+    .titulo {
+    /*background-image:none;*/
+    background-size:70px;
+    background-position:5px 25px;
+    /*background-position:left;*/
+}
+}
+/*Smarthphone*/
+@media(max-width:480px) {
+   
+.div_derecha{
+    font-size:14px;
+    padding-left:10px;
+}
+.boton_entar {
+    font-size:14px;
+}
+.titulo {
+    /*background-image:none;*/
+    background-size:70px;
+    background-position:5px 25px;
+    /*background-position:left;*/
+}
+}
