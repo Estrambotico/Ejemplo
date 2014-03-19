@@ -18,16 +18,21 @@ namespace Ejemplo.Models.Repositorios
         {
             if(Etapa.HasValue && SubEtapa.HasValue)
             {
-                return db.Ca_AccionesProcesales.Where(x => x.Id_Etapa_Procesal == Etapa.Value && x.Id_SubEtapa_Procesal == SubEtapa.Value);
+                return db.Ca_AccionesProcesales.Where(x => x.Id_Etapa_Procesal == Etapa.Value && x.Id_SubEtapa_Procesal == SubEtapa.Value && x.Id_Accion != 0);
             }
             else if (Etapa.HasValue && !SubEtapa.HasValue)
             {
-                return db.Ca_AccionesProcesales.Where(x => x.Id_Etapa_Procesal == Etapa.Value);
+                return db.Ca_AccionesProcesales.Where(x => x.Id_Etapa_Procesal == Etapa.Value && x.Id_Accion != 0);
             }
             else
             {
-                return db.Ca_AccionesProcesales;
+                return db.Ca_AccionesProcesales.Where(x => x.Id_Accion != 0);
             }
+        }
+
+        public IQueryable<Ca_AccionesProcesales> ListaEtapas()
+        {
+            return db.Ca_AccionesProcesales.Where(x => x.Id_Accion == 0 && x.Id_SubEtapa_Procesal == 0);
         }
 
         public void AgregarAccionProceal(Ca_AccionesProcesales accion)

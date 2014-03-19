@@ -88,5 +88,13 @@ namespace Ejemplo.Controllers
         {
             return View(repo.ObtenerAccionProcesal(Id_Accion));
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ListaEtapas()
+        {
+            IQueryable<Ca_AccionesProcesales> Etapas = repo.ListaEtapas();
+            SelectList ls = new SelectList(Etapas, "Id_Etapa", "Descripcion");
+            return new JsonResult { Data = ls };
+        }
     }
 }
