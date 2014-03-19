@@ -93,7 +93,15 @@ namespace Ejemplo.Controllers
         public ActionResult ListaEtapas()
         {
             IQueryable<Ca_AccionesProcesales> Etapas = repo.ListaEtapas();
-            SelectList ls = new SelectList(Etapas, "Id_Etapa", "Descripcion");
+            SelectList ls = new SelectList(Etapas, "Id_Etapa_Procesal", "Descripcion");
+            return new JsonResult { Data = ls };
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ListaSubetapas(int? Etapa)
+        {
+            IQueryable<Ca_AccionesProcesales> SubEtapa = repo.ListaSubEtapas(Etapa);
+            SelectList ls = new SelectList(SubEtapa, "Id_SubEtapa_Procesal", "Descripcion");
             return new JsonResult { Data = ls };
         }
     }

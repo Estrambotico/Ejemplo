@@ -35,6 +35,15 @@ namespace Ejemplo.Models.Repositorios
             return db.Ca_AccionesProcesales.Where(x => x.Id_Accion == 0 && x.Id_SubEtapa_Procesal == 0);
         }
 
+        public IQueryable<Ca_AccionesProcesales> ListaSubEtapas(int? Etapa)
+        {
+            if (Etapa.HasValue)
+            {
+                return db.Ca_AccionesProcesales.Where(x => x.Id_Etapa_Procesal == Etapa && x.Id_SubEtapa_Procesal != 0);
+            }
+            else
+                return db.Ca_AccionesProcesales.Where(x => x.Id_Accion == 0 && x.Id_SubEtapa_Procesal != 0);
+        }
         public void AgregarAccionProceal(Ca_AccionesProcesales accion)
         {
             db.Ca_AccionesProcesales.Add(accion);
