@@ -409,6 +409,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Maquetado.css" />
+    <Content Include="Content\css\starter-template.css" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -469,6 +477,20 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DefensoriaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Img\1395183562_183249.ico" />
+    <Content Include="Img\1395183732_183573.ico" />
+    <Content Include="Img\bg_footer.gif" />
+    <Content Include="Img\fondo-banner.png" />
+    <Content Include="Img\get_adobe_reader.png" />
+    <Content Include="Img\icon-warning.png" />
+    <Content Include="Img\icono_gobierno.png" />
+    <Content Include="Img\ico_separacion2.png" />
+    <Content Include="Img\Imagen1.png" />
+    <Content Include="Img\Imagen2.png" />
+    <Content Include="Img\mundo.png" />
+    <Content Include="Img\volcanes-color.png" />
+    <Content Include="Img\volcanes-fondo.png" />
+    <Content Include="Img\volcanes.png" />
     <Content Include="Models\DefensoriaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DefensoriaModel.edmx</DependentUpon>
@@ -482,6 +504,8 @@
       <DependentUpon>DefensoriaModel.edmx</DependentUpon>
       <LastGenOutput>DefensoriaModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -497,6 +521,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Acciones\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -536,6 +561,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Plantilla\Master.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
