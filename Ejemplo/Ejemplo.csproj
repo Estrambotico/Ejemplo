@@ -416,7 +416,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Content\colorbox\colorbox.css" />
     <Content Include="Content\colorbox\images\border.png" />
     <Content Include="Content\colorbox\images\controls.png" />
@@ -424,7 +423,6 @@
     <Content Include="Content\colorbox\images\loading_background.png" />
     <Content Include="Content\colorbox\images\overlay.png" />
     <Content Include="Content\TableSorterStyle.css" />
-=======
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -438,7 +436,6 @@
     <Content Include="Content\Imagenes\volcanes_2.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
->>>>>>> Primera Actualizacion
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
