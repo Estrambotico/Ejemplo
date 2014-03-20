@@ -445,6 +445,14 @@
     <Content Include="Content\img\volcanes.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\TableStyle.css" />
+    <Content Include="Content\Table\cross.png" />
+    <Content Include="Content\Table\first.png" />
+    <Content Include="Content\Table\last.png" />
+    <Content Include="Content\Table\mas.png" />
+    <Content Include="Content\Table\next.png" />
+    <Content Include="Content\Table\prev.png" />
+    <Content Include="Content\Table_Style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -555,6 +563,7 @@
     <Content Include="Content\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
+    <Content Include="Scripts\dataTables.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -563,6 +572,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.colorbox-min.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.tablesorter.filer.js" />
     <Content Include="Scripts\jquery.tablesorter.js" />
     <Content Include="Scripts\jquery.tablesorter.pager.js" />
     <Content Include="Scripts\jquery.tablesorter.widgets.js" />
@@ -576,7 +586,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Views\Acciones\Index.aspx" />
-    <Content Include="Views\Acciones\ListaAcciones.aspx" />
+    <Content Include="Views\Acciones\ListaAcciones1.aspx" />
     <Content Include="Views\Acciones\NuevaAccionProcesal.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -618,6 +628,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Master.Master" />
+    <Content Include="Views\Acciones\ListaAcciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
