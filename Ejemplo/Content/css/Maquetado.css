@@ -90,36 +90,6 @@
 		   overflow:auto;
 		   color:white;
 		}
-		.botones2 {
-			position:fixed;
-			top:290px;
-			right:4%;
-			width:25%;
-			background-color:#88BC3E;
-		   word-wrap: break-word; 
-		   max-width:200px; 
-		   width:131px;
-		   text-align:right;
-		   padding-right:8px;
-		   overflow:auto;
-		   color:white;
-		   border-radius:5px;
-		}
-		.botones3 {
-			position:fixed;
-			top:290px;
-			right:18%;
-			width:25%;
-			background-color:#88BC3E;
-		   word-wrap: break-word; 
-		   max-width:200px; 
-		   width:175px;
-		   text-align:right;
-		   padding-right:8px;
-		   overflow:auto;
-		   color:white;
-		   border-radius:5px;
-		}
         .columna-der
 		{
 			text-align:right;
@@ -328,18 +298,16 @@
 
         }
 		.barraceentro2 {
-            position:fixed;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.5ex;
             float: left;
             z-index: 10000;
             width:70%;
-            height:auto;
-            top: 340px;
+            height:500px;
+            top: 40%;
             left:10%;
             text-align: left;
             vertical-align: middle;
-            padding:3px;
             opacity:0.90;
 			padding-top:3%;
 			padding-left:2%;
@@ -348,19 +316,29 @@
         }
 				.barraceentro {
 			border:groove;
-            position:fixed;
+			position:relative;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.5ex;
             float: left;
             z-index: 10000;
-            width:95%;
-            height:300px;
-            top: 340px;
-            left:2%;
+            width:50%;
+            height:250px;
+            top: 176%;
+            right:3%;
+			left:2%;
             text-align: left;
             vertical-align: middle;
+			padding-top:50%;
             padding:3px;
             opacity:0.90;
+			overflow:scroll;
+        }
+			.tabla {
+			position:relative;
+			top: 176%;
+            right:3%;
+			left:30%;
+			width:60%;
         }
 
 @media only screen and (max-width:635px)
@@ -453,7 +431,7 @@
 	}
 		.pdf
 	{
-		 top: 89%;
+		 top: 60%;
 		 width:85%;
 		 margin-left:10%;
 			
@@ -461,7 +439,7 @@
 }
 	.footer
 	{
-		 top: 96%;
+		 top: 70%;
 		 left:5%;
 			
 	}
@@ -488,7 +466,7 @@
 	}
 		.pdf
 	{
-		 top: 89%;
+		 top: 60%;
 		 width:85%;
 		 margin-left:10%;
 			
@@ -496,22 +474,17 @@
 }
 	.footer
 	{
-		 top: 96%;
+		 top: 70%;
 		 left:5%;
 			
 	}
 
 
-@media only screen and (min-width:495px) and (max-width:990px)
+@media only screen and (min-width:300px) and (max-width:990px)
 {
 		.barraceentro
 		{
-			height: 430px;
-		}
-		.btn
-		{
-			margin-top:4%;
-			margin-left:10%;
+			height: 250px;
 		}
 			.logoGob
 	{
@@ -529,14 +502,14 @@
 	}
 		.pdf
 	{
-		 top: 93%;
+		 top: 60%;
 		 width:85%;
 		 margin-left:10%;
 			
 	}
 			.footer
 	{
-		 top: 99%;
+		 top: 70%;
 		 left:5%;
 			
 	}

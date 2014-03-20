@@ -1,60 +1,30 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Plantilla/Master.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
-
-<script runat="server">
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-</script>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Plantilla/Master.Master" Inherits="System.Web.Mvc.ViewPage<Ejemplo.Models.Ca_AccionesProcesales>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-      <link href="../../Content/css/Maquetado.css" rel="stylesheet" />
+
+<link href="../../Content/css/Maquetado.css" rel="stylesheet" />
         <div class="starter-template">
         <div style="background-color:white;width:1468px; height: 93px;">
             <div class="columna-izq">
-            <h1>Solicitud de</h1><br />
-            <h2>Actas del Registro Civil</h2>
+            <h1>Solicitud de </h1><br />
+            <h2>Acciones Procesales</h2>
             </div>
             <div class="columna-der">
                 <img src="../../Img/volcanes-color.png"; width: "100px"; height: "100px";/>
             </div>
             <div class="barracentro verde">
-                <div class="barracentroo verde2">
-                    <span class="bmt">PASO 1</span>
-                    <br />
-                    <span class="bmsst">datos personales</span>
-            </div></div>
-            <div class="aviso amarillo">
-                <div class="aviso amarillo"><img src="../../Img/icon-warning.png" class="alertimage" />
-                    <span class="bmtt">NOTA: </span>
-                    <span class="bmst">
-                        requiere que la informacion proporcionada sea correcta para poder proporcionar un servicios de calidad</span>
-            </div></div>
-          <div class="botones">
-              <div class="botones2">
-                  <img src="../../Img/Imagen2.png" class="alertimage2"></img>
-                    Contactanos
-              </div> 
-          </div>
-            <div class="botones">
-              <div class="botones3">
-                  <img src="../../Img/Imagen1.png" class="alertimage2"></img>
-                    Descargar Manual
-              </div> 
-          </div>
+                </div>
            <div class="barraceentro">
                <div class="barraceentro2">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" id="FormAcciones" name="FormAcciones">
                     <fieldset>
                     <!-- Form Name -->
                     <!-- Select Basic -->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="selectbasic">Etapa Procesal</label>
                       <div class="col-md-4">
-                        <select id="selectbasic" name="selectbasic" class="form-control">
-                          <option value="1">Seleccione</option>
-                        </select>
+                        <% var etapas = ViewData["etapas"] as List<Ejemplo.Models.Ca_AccionesProcesales>; %>
+                        <%: Html.DropDownList("Id_Etapa_Procesal", new SelectList(etapas,"Id_Etapa_Procesal","Descripcion"),"Seleccione", "required class = 'Form-control'") %>
                       </div>
                     </div>
 
@@ -62,38 +32,17 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="selectbasic">Sub-Etapa Procesal</label>
                       <div class="col-md-4">
-                        <select id="select1" name="selectbasic" class="form-control">
-                          <option value="1">Seleccione</option>
+                        <select id="Id_SubEtapa_Procesal" name="Id_SubEtapa_Procesal" required>
+                            
                         </select>
                       </div>
                     </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Clave de Accion</label>  
-                      <div class="col-md-8">
-                      <input id="text1" name="textinput" type="text" class="form-control input-md">
-    
-                      </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Descripcion</label>  
-                      <div class="col-md-8">
-                      <input id="text2" name="textinput" type="text" class="form-control input-md">
-                       
-                      </div>
-                    </div>
-<%--                    <!-- Text input-->
+                       <!-- Text input-->
                       <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Fecha de Nacimiento</label> 
+                      <label class="col-md-4 control-label" for="textinput">Descripcion</label> 
                           <div class="col-md-4"> 
-                      <input id="text3" name="textinput" type="text" placeholder="NACIMIENTO" class="form-control input-md">  
-                     </div><button id="button1id" name="button1id" class="btn btn-default">Mostrar Acta</button>
-                        <button id="button2id" name="button2id" class="btn btn-default">Siguiente</button>
-                          </div>--%>
-
+                      <input id="Descripcion" name="Descripcion" type="text" class="form-control input-md">  
+                     </div><input id="guardar" name="guardar" class="btn btn-default" value="Guardar"/>
                     </fieldset>
                     </form>
                <div class="pdf">
@@ -149,5 +98,33 @@
                 
         </div>
     </div>
+    <script src="../../Scripts/Carranza.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Id_Etapa_Procesal").on("change", function () {
+            ajaxJson("/Acciones/ListaSubEtapas/", { "Etapa": $(this).val() }, "Id_SubEtapa_Procesal", 0, callBackLlenarSelect);
+        });
+    });
+    $("#FormAcciones").submit(function (e) {
+        e.preventDefault();
+    });
+    $("input#guardar").click( function() {
+        $.ajax({
+            type: "POST",
+            url: "/Acciones/NuevaAccionProcesal",
+            data: $("#FormAcciones").serialize(),
+            success: function(data) {
+                if (data.Exito == false) {
+                    alert(data.Mensaje);
+                } else
+                {
+                    $("#FormAcciones")[0].reset();
+                    alert("Se almaceno Correctamente");
+                    }
+            }
+        });
+    });
+</script>
+
 
 </asp:Content>

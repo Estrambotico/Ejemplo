@@ -409,15 +409,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Content\colorbox\colorbox.css" />
     <Content Include="Content\colorbox\images\border.png" />
     <Content Include="Content\colorbox\images\controls.png" />
     <Content Include="Content\colorbox\images\loading.gif" />
     <Content Include="Content\colorbox\images\loading_background.png" />
     <Content Include="Content\colorbox\images\overlay.png" />
+    <Content Include="Content\css\TableStyle.css" />
+    <Content Include="Content\css\Table_Style.css" />
     <Content Include="Content\TableSorterStyle.css" />
-=======
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -426,7 +426,12 @@
     <Content Include="Content\css\starter-template.css" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
->>>>>>> Primera Actualizacion
+    <Content Include="Content\Table\cross.png" />
+    <Content Include="Content\Table\first.png" />
+    <Content Include="Content\Table\last.png" />
+    <Content Include="Content\Table\mas.png" />
+    <Content Include="Content\Table\next.png" />
+    <Content Include="Content\Table\prev.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -526,6 +531,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.colorbox-min.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.tablesorter.filer.js" />
     <Content Include="Scripts\jquery.tablesorter.js" />
     <Content Include="Scripts\jquery.tablesorter.pager.js" />
     <Content Include="Scripts\jquery.tablesorter.widgets.js" />
@@ -538,6 +544,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Acciones\Catalogo.aspx" />
+    <Content Include="Views\Acciones\ListaAcciones.aspx" />
+    <Content Include="Views\Acciones\NuevaAccionProcesal.aspx" />
     <Content Include="Views\Acciones\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
