@@ -17,8 +17,9 @@
 
                
 
-            <% using (Html.BeginForm()) { %>
-                <%: Html.ValidationSummary(true) %>
+            <% using (Html.BeginForm("NuevaAccionProcesal", "Acciones", FormMethod.Post, new { id="frm_nueva_accion"}))
+               { %>
+                <%: Html.ValidationSummary(true)%>
 
                 <fieldset>
                     
@@ -28,7 +29,7 @@
                     </div>
                     <div class="editor-field">
                         <% var etapas = ViewData["Etapas"] as List<Ejemplo.Models.Ca_AccionesProcesales>;  %>
-                            <%: Html.DropDownList("Id_Etapa_Procesal",new SelectList(etapas,"Id_Etapa_Procesal","Descripcion"),"---Seleccione---","required") %>
+                            <%: Html.DropDownList("Id_Etapa_Procesal", new SelectList(etapas, "Id_Etapa_Procesal", "Descripcion"), "---Seleccione---", "required")%>
                     </div>
 
                     <div class="editor-label">
@@ -40,72 +41,28 @@
                             </select>
                     </div>
 
+                    
                     <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Id_Accion) %>
+                        <%: Html.LabelFor(model => model.Descripcion)%>
                     </div>
                     <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Id_Accion) %>
-                        <%: Html.ValidationMessageFor(model => model.Id_Accion) %>
+                        <%: Html.EditorFor(model => model.Descripcion)%>
+                        <%: Html.ValidationMessageFor(model => model.Descripcion)%>
                     </div>
 
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.id_AccionProcesal) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.id_AccionProcesal) %>
-                        <%: Html.ValidationMessageFor(model => model.id_AccionProcesal) %>
-                    </div>
+                   
 
                     <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Descripcion) %>
+                        <%: Html.LabelFor(model => model.NombreCompleto)%>
                     </div>
                     <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Descripcion) %>
-                        <%: Html.ValidationMessageFor(model => model.Descripcion) %>
+                        <%: Html.EditorFor(model => model.NombreCompleto)%>
+                        <%: Html.ValidationMessageFor(model => model.NombreCompleto)%>
                     </div>
 
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Etapa) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Etapa) %>
-                        <%: Html.ValidationMessageFor(model => model.Etapa) %>
-                    </div>
-
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.SubEtapa) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.SubEtapa) %>
-                        <%: Html.ValidationMessageFor(model => model.SubEtapa) %>
-                    </div>
-
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Usu_Act) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Usu_Act) %>
-                        <%: Html.ValidationMessageFor(model => model.Usu_Act) %>
-                    </div>
-
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.NombreCompleto) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.NombreCompleto) %>
-                        <%: Html.ValidationMessageFor(model => model.NombreCompleto) %>
-                    </div>
-
-                    <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Fecha_Act) %>
-                    </div>
-                    <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Fecha_Act) %>
-                        <%: Html.ValidationMessageFor(model => model.Fecha_Act) %>
-                    </div>
 
                     <p>
-                        <button type="submit" class="btn btn-primary" >Guardar</button>
+                        <button id="btn_guardar" type="button" class="btn btn-primary" >Guardar</button>
                        
                     </p>
                 </fieldset>
@@ -120,6 +77,25 @@
             $("#Id_Etapa_Procesal").on("change", function () {
                 ajaxJson("/Acciones/ListaSubEtapas/", { Etapa: $(this).val() }, "Id_SubEtapa_Procesal", 0, callBackLlenarSelect);
                
+            });
+
+            $("#btn_guardar").on("click", function () {
+                alert('....');
+                $.ajax({
+                    type: "POST",
+                    datatype: "json",
+                    url: "/Acciones/NuevaAccionProcesal/",
+                    data:$("#frm_nueva_accion").serialize(),
+                    success: function(result){
+                        if(result.Exito==false){
+                            alert("'Error"+Mensaje+"'");
+                        }
+                        else{
+                        }
+                        alert('Registro agregado correctamente');
+                    }
+                    
+                });
             });
            
         });

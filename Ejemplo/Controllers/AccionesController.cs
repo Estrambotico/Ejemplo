@@ -22,6 +22,13 @@ namespace Ejemplo.Controllers
         {
             return View(repo.ListAccionesProcesales(Etapa, SubEtapa));
         }
+        public ActionResult Editar(String Id_Accion)
+        {
+            var etapas = repo.ListaEtapas().ToList();
+            ViewData["Etapas"] = etapas;
+            Ca_AccionesProcesales acciones = repo.ObtenerAccionProcesal(Id_Accion);
+            return View(acciones);
+        }
         
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditarAccion(Ca_AccionesProcesales accion)
@@ -30,7 +37,10 @@ namespace Ejemplo.Controllers
             {
                 Ca_AccionesProcesales temp = repo.ObtenerAccionProcesal(accion.id_AccionProcesal);
                 if (temp.Id_Etapa_Procesal != accion.Id_Etapa_Procesal && temp.Id_SubEtapa_Procesal != accion.Id_SubEtapa_Procesal)
+                {
                     UpdateModel<Ca_AccionesProcesales>(temp);
+                    repo.GuardarCambios();
+                }
                 else
                 {
                     temp.Descripcion = accion.Descripcion;
