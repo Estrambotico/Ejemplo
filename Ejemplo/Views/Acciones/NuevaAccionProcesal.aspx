@@ -7,6 +7,13 @@
                 <h2>Nueva accion procesal</h2>
             </div>
         </div>
+        <div class="row">
+            <div class="form-horizontal">
+                <div class="form-group">
+
+                </div>
+            </div>
+        </div>
 
                
 
@@ -17,19 +24,20 @@
                     
 
                     <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Id_Etapa_Procesal) %>
+                       <label class="control-label text-right">Etapa procesal</label>
                     </div>
                     <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Id_Etapa_Procesal) %>
-                        <%: Html.ValidationMessageFor(model => model.Id_Etapa_Procesal) %>
+                        <% var etapas = ViewData["Etapas"] as List<Ejemplo.Models.Ca_AccionesProcesales>;  %>
+                            <%: Html.DropDownList("Id_Etapa_Procesal",new SelectList(etapas,"Id_Etapa_Procesal","Descripcion"),"---Seleccione---","required") %>
                     </div>
 
                     <div class="editor-label">
-                        <%: Html.LabelFor(model => model.Id_SubEtapa_Procesal) %>
+                         <label class="control-label text-right">SubEtapa procesal</label>
                     </div>
                     <div class="editor-field">
-                        <%: Html.EditorFor(model => model.Id_SubEtapa_Procesal) %>
-                        <%: Html.ValidationMessageFor(model => model.Id_SubEtapa_Procesal) %>
+                        <select id="Id_SubEtapa_Procesal" name="Id_SubEtapa_Procesal">
+                                <option value="0">---Seleccione---</option>
+                            </select>
                     </div>
 
                     <div class="editor-label">
@@ -104,8 +112,17 @@
             <% } %>
 
             <div>
-                <%: Html.ActionLink("Regresar a la lista", "Index") %>
+                <%: Html.ActionLink("Regresar a la lista", "ListaAcciones") %>
             </div>
   </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Id_Etapa_Procesal").on("change", function () {
+                ajaxJson("/Acciones/ListaSubEtapas/", { Etapa: $(this).val() }, "Id_SubEtapa_Procesal", 0, callBackLlenarSelect);
+               
+            });
+           
+        });
 
+</script>
 </asp:Content>

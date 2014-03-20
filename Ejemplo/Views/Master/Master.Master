@@ -20,6 +20,7 @@
   <!------------- JQUERY  ------------------>
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="../../Content/js/bootstrap.min.js"></script>
+      <script src="../../Scripts/Carranza.js"></script>
 </head>
   <body>
       <div class="container">

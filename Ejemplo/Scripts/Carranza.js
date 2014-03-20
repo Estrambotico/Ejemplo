@@ -1,4 +1,5 @@
-var ajaxJson = function(URL, DATA, dr, seleccion, callback) {
+
+var ajaxJson = function (URL, DATA, dr, seleccion, callback) {
     $.ajax({
         type: "POST",
         datatype: "json",
@@ -18,7 +19,7 @@ var ajaxJson = function(URL, DATA, dr, seleccion, callback) {
 var callBackLlenarSelect = function(result, dr, seleccion) {
     $("#" + dr).empty();
     if (result.length != 0) {
-        $("#" + dr).append("<option value=0>--Selecciona Una--</option>");
+        $("#" + dr).append("<option value=0>Seleccione...</option>");
         $.each(result, function(i, item) {
             $("#" + dr).append("<option value='" + item.Value + "'>" + item.Text + "</option>");
         });
@@ -27,4 +28,5 @@ var callBackLlenarSelect = function(result, dr, seleccion) {
     else {
         $("#" + dr).append("<option value='0'>--Sin Resultados--</option>");
     }
+    
 }

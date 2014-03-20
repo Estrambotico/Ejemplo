@@ -48,6 +48,8 @@ namespace Ejemplo.Controllers
 
         public ActionResult NuevaAccionProcesal()
         {
+            var etapas = repo.ListaEtapas().ToList();
+            ViewData["Etapas"] = etapas;
             return View();
         }
 
@@ -68,7 +70,7 @@ namespace Ejemplo.Controllers
                 return Json(new { Exito = false, Mensaje = ex.Message });
             }
         }
-
+        
         public ActionResult EliminarAccion(String Id_Accion)
         {
             try
@@ -76,11 +78,11 @@ namespace Ejemplo.Controllers
                 Ca_AccionesProcesales accion = repo.ObtenerAccionProcesal(Id_Accion);
                 repo.EliminarAccion(accion);
                 repo.GuardarCambios();
-                return Json(new { Exito = true });
+                return Json(new { Exito = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                return Json(new { Exito = false, Mensaje = ex.Message });
+                return Json(new { Exito = false, Mensaje = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 

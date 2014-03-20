@@ -68,9 +68,9 @@
             <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
         </td>
         <td>
-            <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
-            <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) %>
+            <%: Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) %> |
+            <%: Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) %> |
+            <%: Html.ActionLink("Eliminar", "EliminarAccion", new { Id_Accion=item.id_AccionProcesal }) %>
         </td>
     </tr>
 <% } %>
