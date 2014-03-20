@@ -97,7 +97,8 @@
                     </fieldset>
                     </form>
                <div class="pdf">
-                   <div class="soloimagen"><img src="../../Img/get_adobe_reader.png" class="pdfimage" />
+                   <div class="soloimagen">
+                    <img src="../../Img/get_adobe_reader.png" class="pdfimage" />
                     </div><div class="solotexto" >
                     Para que el sitio funione orrectamente es necesario tener instalado el Acrobat Reader. Haz click aqui para instalarlo.
                     </div>
@@ -106,10 +107,43 @@
                 </div>
            </div>
             <div class="footer row">
-                <div class="col-md-3">ddddddd</div>
-                <div class="col-md-3">ddddddd</div>
-                <div class="col-md-3">ddddddd</div>
-                <div class="col-md-3">ddddddd</div>
+                <div class="col-md-3 foot">
+                    <img src="../../Img/icono_gobierno.png" class="logoGob"/></br>
+                    Complejo Adminsitrativo del Gobierno del Estado . 3er. Anillo Periferico, Esq. Ejercito Mexicano.S/N. Colonia el Diezmo Tel. (312)316 2000 C.P. 28010, Colima, Colima, Mexico
+                </div>
+                <div class="col-md-3 foot">
+                    <ul>
+                        <li>Tramites y Servicios</li>
+                        <li>&nbsp;&nbsp;&nbsp;Lista de tramites y servicios en linea</li>
+                        <li>&nbsp;&nbsp;&nbsp;Catalogo de tramites y servicios</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 foot">
+                    <ul>
+                        <li>Transparencia</li>
+                        <li>Gobierno</li>
+                        <li>&nbsp;&nbsp;&nbsp;Gabinete</li>
+                        <li>&nbsp;&nbsp;&nbsp;Secretarias</li>
+                        <li>&nbsp;&nbsp;&nbsp;H. Congreso de Estado</li>
+                        <li>&nbsp;&nbsp;&nbsp;Supremo Tribunal de Justicia</li>
+                        <li>&nbsp;&nbsp;&nbsp;Periodico Oficial</li>
+                        <li>&nbsp;&nbsp;&nbsp;Municipios</li>
+                        <li>&nbsp;&nbsp;&nbsp;Estructura Organica</li>
+                        <li>&nbsp;&nbsp;&nbsp;Organismos desconcentrados, descentralizados y autonomos</li>
+                        <li>Educacion</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 foot">
+                    <ul>
+                        <li>Negocios</li>
+                        <li>Turismo</li>
+                        <li>Cultura</li>
+                        <li>Seguridad</li>
+                        <li>&nbsp;&nbsp;&nbsp;Proteccion Civil</li>
+                        <li>&nbsp;&nbsp;&nbsp;Procuraduria General de Justicia</li>
+                        <li>&nbsp;&nbsp;&nbsp;Secretaria de Seguridad Publica</li>
+                    </ul>
+                </div>
 
             </div>
                 

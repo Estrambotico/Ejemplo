@@ -252,7 +252,7 @@
 			font-size:11px;
 		}
 		.footer {
-            position:absolute;
+            position:fixed;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.5ex;
             float: left;
@@ -282,9 +282,16 @@
 			left:25px;
 			padding-top:15px;
 		}
-		span.foot
+		.foot
 		{
-			text-align:justify;
+			padding-top:10px;
+			text-align:left;
+			line-height:1.5em;
+			
+		}
+		ul
+		{
+			list-style-type: none;
 		}
 
         .verde
@@ -394,6 +401,34 @@
 		margin-top:4%;
 		margin-left:10%;
 	}
+	.logoGob
+	{
+		width:30%;
+		height:20%;
+		left:25px;
+		padding-top:15px;
+	}
+	.foot
+	{
+		padding-top:10px;
+		text-align:left;
+		line-height:1.5em;
+			
+	}
+		.pdf
+	{
+		 top: 89%;
+		 width:85%;
+		 margin-left:10%;
+			
+	}
+}
+	.footer
+	{
+		 top: 96%;
+		 left:5%;
+			
+	}
 }
 @media only screen and (min-width:636px)
 {
@@ -402,18 +437,72 @@
 	{
 		right: 25%;
 	}
-		
+		.logoGob
+	{
+		width:30%;
+		height:20%;
+		left:25px;
+		padding-top:15px;
+	}
+	.foot
+	{
+		padding-top:10px;
+		text-align:left;
+		line-height:1.5em;
+			
+	}
+		.pdf
+	{
+		 top: 89%;
+		 width:85%;
+		 margin-left:10%;
+			
+	}
 }
-@media only screen and (min-width:1023px)
+	.footer
+	{
+		 top: 96%;
+		 left:5%;
+			
+	}
+@media only screen and (min-width:990px)
 {
 
 		.botones3
 		{
 			right: 20%;
 		}
+			.logoGob
+	{
+		width:30%;
+		height:20%;
+		left:25px;
+		padding-top:15px;
+	}
+	.foot
+	{
+		padding-top:10px;
+		text-align:left;
+		line-height:1.5em;
+			
+	}
+		.pdf
+	{
+		 top: 89%;
+		 width:85%;
+		 margin-left:10%;
+			
+	}
 }
+	.footer
+	{
+		 top: 96%;
+		 left:5%;
+			
+	}
 
-@media only screen and (min-width:500px) and (max-width:990px)
+
+@media only screen and (min-width:495px) and (max-width:990px)
 {
 		.barraceentro
 		{
@@ -424,5 +513,33 @@
 			margin-top:4%;
 			margin-left:10%;
 		}
+			.logoGob
+	{
+		width:30%;
+		height:20%;
+		left:25px;
+		padding-top:15px;
+	}
+	.foot
+	{
+		padding-top:10px;
+		text-align:left;
+		line-height:1.5em;
+			
+	}
+		.pdf
+	{
+		 top: 93%;
+		 width:85%;
+		 margin-left:10%;
+			
+	}
+			.footer
+	{
+		 top: 99%;
+		 left:5%;
+			
+	}
 
 }
+
