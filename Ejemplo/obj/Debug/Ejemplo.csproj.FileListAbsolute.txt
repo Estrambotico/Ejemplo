@@ -61,3 +61,4 @@ C:\Users\Christian\Documents\Visual Studio 2012\Projects\Ejemplo\Ejemplo\bin\es\
 C:\Users\Christian\Documents\Visual Studio 2012\Projects\Ejemplo\Ejemplo\bin\es\WebMatrix.WebData.resources.dll
 C:\Users\Christian\Documents\Visual Studio 2012\Projects\Ejemplo\Ejemplo\obj\Debug\Ejemplo.dll
 C:\Users\Christian\Documents\Visual Studio 2012\Projects\Ejemplo\Ejemplo\obj\Debug\Ejemplo.pdb
+C:\Users\Christian\Documents\Visual Studio 2012\Projects\Ejemplo\Ejemplo\obj\Debug\Ejemplo.csprojResolveAssemblyReference.cache

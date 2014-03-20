@@ -28,7 +28,7 @@
 			</div>
 			<br/>
 			<div class="row">
-				<form class="form-horizontal" action="" method="post">
+				<form class="form-horizontal" action="/NuevaAccionProcesal" method="post">
 					<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 control-label text-right">Etapa procesal:</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
@@ -50,19 +50,19 @@
 							<%: Html.EditorFor(model => model.Id_Accion) %>
 						</div>
 					</div>
-					<div class="form-group">
+					<!--<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 control-label text-right">Clave acción procesal:</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
 							<%: Html.EditorFor(model => model.id_AccionProcesal) %>
 						</div>
-					</div>
+					</div>-->
 					<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Descripción:</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
 							<%: Html.EditorFor(model => model.Descripcion) %>
 						</div>
 					</div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">¿Usuario activo?:</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
 							<%: Html.EditorFor(model => model.Usu_Act) %>
@@ -74,7 +74,7 @@
 							<button id="mostrarActa" name="mostrarActa" class="btn btn-primary btn-margin">Mostrar acta</button>
 							<button id="siguiente" name="siguiente" class="btn btn-primary">Siguiente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 						</div>
-					</div>
+					</div>-->
 				</form>
 			</div>
 <div>
@@ -83,7 +83,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#Id_Etapa_Procesal").on("change", function () {
-            ajaxJson("/Acciones/ListaSubEtapas/", {"Etapa" : $(this).val()}, "#Id_SubEtapa_Procesal", 0, "callBackLlenarSelect");
+            ajaxJson("/Acciones/ListaSubEtapas/", { Etapa: $(this).val() }, "Id_SubEtapa_Procesal", 0, callBackLlenarSelect);
         });
     });
     
