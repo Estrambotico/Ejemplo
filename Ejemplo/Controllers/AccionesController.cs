@@ -48,6 +48,8 @@ namespace Ejemplo.Controllers
 
         public ActionResult NuevaAccionProcesal()
         {
+            var etapas = repo.ListaEtapas().ToList();
+            ViewData["etapas"] = etapas;
             return View();
         }
 

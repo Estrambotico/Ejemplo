@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f4f41cac6b0a4457aee950546ca61d11" Name="Diagrama1">
-        <EntityTypeShape EntityType="BD_DefensoriaOficio_PruebasModel.Ca_AccionesProcesales" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_DefensoriaOficio_PruebasModel.Ca_AccionesProcesales" Width="2.125" PointX="0.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_DefensoriaOficio_PruebasModel.Ca_Causas" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_DefensoriaOficio_PruebasModel.Ca_Clasificaciones_Delitos" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_DefensoriaOficio_PruebasModel.Ca_ClasificacionJuzgados" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
