@@ -149,7 +149,7 @@
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Editar", new {Id_Accion=item.id_AccionProcesal}) %> |
-            <a class='ajax' href="/Acciones/DetallesAccion/" title="Detalles">Detalles</a>
+            <a class='ajax' href="/Acciones/DetallesAccion/000001" title="Detalles">Detalles</a>
           |
             <%: Html.ActionLink("Eliminar", "EliminarAccion", new { Id_Accion = item.id_AccionProcesal })%>
          
@@ -173,20 +173,7 @@
             </tr>
         </tfoot>
 </table>
-        <div id="dialog-form" title="Create new user">
-          <p class="validateTips">All form fields are required.</p>
- 
-          <form>
-          <fieldset>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
-          </fieldset>
-          </form>
-        </div>
+        
          <div class="row footer">
 
                 <div class="col-md-3">
