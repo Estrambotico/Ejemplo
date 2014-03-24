@@ -2076,8 +2076,8 @@
 			var sSearchStr = oSettings.oLanguage.sSearch;
 			sSearchStr = (sSearchStr.indexOf('_INPUT_') !== -1) ?
 			  sSearchStr.replace('_INPUT_', '<input type="text" />') :
-			  sSearchStr==="" ? '<input type="text" />' : sSearchStr+' <input type="text" id="textFilter"/>';
-			
+			  //sSearchStr==="" ? '<input type="text" f/>' : sSearchStr+' <input type="text" id="textFilter"/>';
+			sSearchStr === "" ? '' : '';
 			var nFilter = document.createElement( 'div' );
 			nFilter.className = oSettings.oClasses.sFilter;
 			nFilter.innerHTML = '<label>'+sSearchStr+'</label>';
@@ -7967,7 +7967,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
+		"aLengthMenu": [ 5,10, 25, 50, 100 ],
 	
 	
 		/**

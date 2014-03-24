@@ -7,7 +7,8 @@
 
 <h2>Lista de acciones procesales</h2>
 <table id="tableOne" class="yui" width="100%" style="margin: 1% auto;" >
-     Nueva acción procesal<a href="/Acciones/NuevaAccionProcesal">
+    
+     Nueva acción procesal<a href="/Acciones/NuevaAccionProcesal" class="ajax_nueva_accion">
                         <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
                             alt="Dar de alta nueva cena" /></a>
     <thead class="cabecera_tabla">
@@ -18,7 +19,7 @@
             </tr>
         <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripci&oacute;n
         </th>
         <th>Fecha de actualización</th>
         <th></th>
@@ -92,10 +93,10 @@
                     }
                 });
             });
-           
             
             ConstruirTabla();
             $(".ajax").colorbox();
+            $(".ajax_nueva_accion").colorbox();
             $('.eliminarAccion').live('click', function (e) {
                 e.preventDefault();
                 if (confirm("¿Estás seguro de eliminar esta acción D:?")) {
@@ -122,17 +123,8 @@
             var asInitVals = new Array();
                 table = $("#tableOne").dataTable({
                 "sPaginationType": "full_numbers",
-                "oLanguage": {
-                    "sLengthMenu": 'Mostrar <select>' +
-                        '<option value="5">5</option>' +
-			             '<option value="10">10</option>'+
-			             '<option value="20">20</option>'+
-			             '<option value="30">30</option>'+
-			             '<option value="40">40</option>'+
-			             '<option value="50">50</option>'+
-			             '<option value="-1">Todos</option>'+
-			             '</select> registros'
-                }
+                "iDisplayLength": 5,
+                "aLengthMenu": [[5, 10, 15, 20, 25, 50, 100, -1], [5, 10, 15, 20, 25, 50, 100, "Todos"]]
             });
             $("tfoot input").keyup(function () {
                 table.fnFilter(this.value, $("tfoot input").index(this));
@@ -151,9 +143,6 @@
                     this.className = "search_init";
                     this.value = asInitVals[$("tfoot input").index(this)];
                 }
-            });
-            $("#textF   ilter").on('keyup', function () {
-                
             });
         }
     </script>        

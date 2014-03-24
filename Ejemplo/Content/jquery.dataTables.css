@@ -37,7 +37,7 @@ table.dataTable tr.even { background-color: white; }
 table.dataTable tr.odd td.sorting_1 { background-color: #88BC3E; }
 table.dataTable tr.odd td.sorting_2 { background-color: #DADCFF; }
 table.dataTable tr.odd td.sorting_3 { background-color: #E0E2FF; }
-table.dataTable tr.even td.sorting_1 { background-color: #EAEBFF; }
+table.dataTable tr.even td.sorting_1 { background-color: #D2D2D2; }
 table.dataTable tr.even td.sorting_2 { background-color: #F2F3FF; }
 table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 
@@ -220,9 +220,25 @@ table.dataTable thead td:active {
 }
 
 .search_init {
-    color:lightgray;
+    color:#969696;
 }
 .cabecera_tabla {
-    background-color:black;
+    -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+    background-color:#181A1F;
+    background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.51, #0A080A),
+		color-stop(0.88, #292729)
+	);
+	background-image: -o-linear-gradient(bottom, #0A080A 51%, #292729 88%);
+	background-image: -moz-linear-gradient(bottom, #0A080A 51%, #292729 88%);
+	background-image: -webkit-linear-gradient(bottom, #0A080A 51%, #292729 88%);
+	background-image: -ms-linear-gradient(bottom, #0A080A 51%, #292729 88%);
+	background-image: linear-gradient(to bottom, #0A080A 51%, #292729 88%);
+    background-repeat: repeat-x;
     color:white;
 }

@@ -102,6 +102,7 @@
                         } else {
                             $("#frm_nva_accion_procesal")[0].reset();
                             alert("Insertado correctamente");
+                            window.open("/Acciones/ListaAcciones", "_self");
                         }
                     }
                 });

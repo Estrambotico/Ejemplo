@@ -1,6 +1,6 @@
 ﻿html{
 	position: relative;
-	width:expression(document.body.clientWidth < 600? "600px": "auto" );
+	font-size:15px;
 }
 body {
   	margin-bottom: 60px;
