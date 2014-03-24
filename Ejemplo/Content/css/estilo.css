@@ -171,3 +171,31 @@ body {
 .container .text-muted {
   	margin: 20px 0;
 }
+.eliminar { 
+    background: url(../../Images/iconos/delete.png) no-repeat top left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px; /* hides the link text */
+}
+.eliminar { 
+    background: url(../../Images/iconos/delete.png) no-repeat top left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px; /* hides the link text */
+}
+.editar { 
+    background: url(../../Images/iconos/edit.png) no-repeat top left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px; /* hides the link text */
+}
+.detalles{ 
+    background: url(../../Images/iconos/details.png) no-repeat top left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px; /* hides the link text */
+}
