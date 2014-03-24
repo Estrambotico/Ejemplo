@@ -22,7 +22,15 @@ namespace Ejemplo.Controllers
         {
             return View(repo.ListAccionesProcesales(Etapa, SubEtapa));
         }
-        
+
+        public ActionResult EditarAccion(String Id_Accion)
+        {
+            var etapas = repo.ListaEtapas().ToList();
+            ViewData["etapas"] = etapas;
+            Ca_AccionesProcesales accion = repo.ObtenerAccionProcesal(Id_Accion);
+            return View(accion);
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditarAccion(Ca_AccionesProcesales accion)
         {
@@ -78,11 +86,11 @@ namespace Ejemplo.Controllers
                 Ca_AccionesProcesales accion = repo.ObtenerAccionProcesal(Id_Accion);
                 repo.EliminarAccion(accion);
                 repo.GuardarCambios();
-                return Json(new { Exito = true });
+                return Json(new { Exito = true },JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                return Json(new { Exito = false, Mensaje = ex.Message });
+                return Json(new { Exito = false, Mensaje = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -105,6 +113,11 @@ namespace Ejemplo.Controllers
             IQueryable<Ca_AccionesProcesales> SubEtapa = repo.ListaSubEtapas(Etapa);
             SelectList ls = new SelectList(SubEtapa, "Id_SubEtapa_Procesal", "Descripcion");
             return new JsonResult { Data = ls };
+        }
+
+        public ActionResult vista()
+        {
+            return View();
         }
     }
 }

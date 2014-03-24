@@ -6,15 +6,11 @@
 }
     <link href="../../Content/TableSorterStyle.css" rel="stylesheet" />
 
-<h2>ListaAcciones</h2>
-
-<p>
-    @Html.ActionLink("Nueva acción procesal", "NuevaAccionProcesal")
-</p>
+<h2>Lista de acciones procesales</h2>
 <table id="tableOne" class="yui" width="100%" style="margin: 1% auto;" >
     <thead>
         <tr>
-            <td class="tableHeader" colspan="4">
+            <td class="tableHeader" colspan="2">
                     Nueva acción procesal<a href="/Acciones/NuevaAccionProcesal">
                         <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
                             alt="Dar de alta nueva cena" /></a>
@@ -26,39 +22,34 @@
                 </td>
             </tr>
         <tr>
-            <th>
-            @Html.DisplayNameFor(model => model.Id_Etapa_Procesal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_SubEtapa_Procesal)
-        </th>
+        <!--<th>Etapa procesal</th>
+        <th>Sub etapa procesal</th>-->
         <!--<th>
             @Html.DisplayNameFor(model => model.Id_Accion)
         </th>
-        <th>-->
+        <th>
             @Html.DisplayNameFor(model => model.id_AccionProcesal)
-        </th>
+        </th>-->
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
-        <!--<th>
-            @Html.DisplayNameFor(model => model.Usu_Act)
-        </th>-->
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_Act)
-        </th>
+        <th>Fecha de actualización</th>
         <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Etapa_Procesal)
-        </td>
-        <td>
+    <tr id="@item.id_AccionProcesal">
+        <!--<td>
+           <!-- @{
+            //Ejemplo.Models.Repositorios.RepoDenfensoria r = new Ejemplo.Models.Repositorios.RepoDenfensoria();
+           // Ejemplo.Models.Ca_AccionesProcesales accion = r.getEtapa(item.Id_Etapa_Procesal,item.Id_SubEtapa_Procesal);
+            }
+            
+        </td>-->
+        <!--td>
             @Html.DisplayFor(modelItem => item.Id_SubEtapa_Procesal)
-        </td>
+        </!--td>-->
         <!--<td>
             @Html.DisplayFor(modelItem => item.Id_Accion)
         </td>
@@ -75,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.Fecha_Act)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Editar", "EditarAccion", new {  id_Accion=item.id_AccionProcesal},new { @class = "ajax cboxElement"})|
+            @Html.ActionLink("Detalles", "DetallesAccion", new {id_Accion=item.id_AccionProcesal},new { @class = "ajax cboxElement"}) |
+            @Html.ActionLink("Eliminar", "EliminarAccion", new { id_Accion=item.id_AccionProcesal },new { @class = "eliminarAccion"})
         </td>
     </tr>
 }
@@ -91,7 +82,9 @@
                     <img src="../../Content/Table/next.png" class="next" alt="" width="32px" height ="32px" style="cursor:pointer"/>
                     <img src="../../Content/Table/last.png" class="last" alt="" width="32px" height ="32px" style="cursor:pointer"/>
                     <select class="pagesize">
+                        <option selected="selected" value="5">5</option>
                         <option selected="selected" value="10">10</option>
+                        <option selected="selected" value="15">15</option>
                     </select>
                 </td>
             </tr>
@@ -101,22 +94,50 @@
     <script src="../../Scripts/jquery.tablesorter.js"></script>
     <script src="../../Scripts/jquery.tablesorter.pager.js"></script>
     <script src="../../Scripts/jquery.tablesorter.widgets.js"></script>
-    <link href="~/Content/TableSorterStyle.css" rel="stylesheet" />
-    
+    <link href="~/Content/TableSorterStyle.css" rel="stylesheet" />º
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.colorbox-min.js"></script>
     <script src="../../Scripts/jquery.tablesorter.filer.js"></script>
     <link href="~/Content/Table_Style.css" rel="stylesheet" />
     <link href="~/Content/TableStyle.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#tableOne").tablesorter({ debug: false, sortList: [], widgets: ['zebra'] })
-                            .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
-                            .tablesorterFilter({
-                                filterContainer: $("#filterBoxOne"),
-                                filterClearContainer: $("#filterClearOne"),
-                                filterColumns: [0, 1, 2 ,3 ,4],  // Agregar tantos como campos necesarios
-                                filterCaseSensitive: false
-                            });
-
+            ConstruirTabla();
+            $(".ajax").colorbox();
+            $('.eliminarAccion').on('click', function (e) {
+                alert("Se hizo click");
+                if (confirm("¿Estás seguro de eliminar esta acción D:?")) {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        success: function (data) {
+                            if (data.Exito == true) {
+                                alert("Acción eliminada con éxito");
+                                /*var i = url.split("=");
+                                $("#" + i[1]).remove();
+                                ConstruirTabla();*/
+                                window.open("/Acciones/ListaAcciones", "_self");
+                            }else
+                                alert("Error al eliminar la acción");
+                        }, error: function (data) {
+                            alert("No se puede eliminar la acción");
+                        }
+                    });
+                } else
+                    return false;
+            });
         });
+        function ConstruirTabla() {
+            $("#tableOne").tablesorter({ debug: false, sortList: [], widgets: ['zebra'] })
+                           .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
+                           .tablesorterFilter({
+                               filterContainer: $("#filterBoxOne"),
+                               filterClearContainer: $("#filterClearOne"),
+                               filterColumns: [0, 1, 2, 3, 4],  // Agregar tantos como campos necesarios
+                               filterCaseSensitive: false
+                           });
+        }
     </script>        
 }

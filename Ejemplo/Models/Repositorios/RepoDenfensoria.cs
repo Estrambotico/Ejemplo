@@ -40,11 +40,6 @@ namespace Ejemplo.Models.Repositorios
             return db.Ca_AccionesProcesales.SingleOrDefault(x => x.Id_Etapa_Procesal == Etapa && x.Id_SubEtapa_Procesal != 0);
         }
 
-        public Ca_AccionesProcesales getEtapa(int Etapa)
-        {
-            return db.Ca_AccionesProcesales.SingleOrDefault(x=> x.Id_Etapa_Procesal == Etapa);
-        }
-
         public IQueryable<Ca_AccionesProcesales> ListaSubEtapas(int? Etapa)
         {
             if (Etapa.HasValue)
