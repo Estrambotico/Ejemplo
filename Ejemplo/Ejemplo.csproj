@@ -422,6 +422,11 @@
     <Content Include="Content\colorbox\images\loading.gif" />
     <Content Include="Content\colorbox\images\loading_background.png" />
     <Content Include="Content\colorbox\images\overlay.png" />
+    <Content Include="Content\demo_page.css" />
+    <Content Include="Content\demo_table.css" />
+    <Content Include="Content\demo_table_jui.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\jquery.dataTables_themeroller.css" />
     <Content Include="Content\TableSorterStyle.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
@@ -513,6 +518,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DefensoriaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\datatable_img\back_disabled.png" />
+    <Content Include="Images\datatable_img\back_enabled.png" />
+    <Content Include="Images\datatable_img\back_enabled_hover.png" />
+    <Content Include="Images\datatable_img\favicon.ico" />
+    <Content Include="Images\datatable_img\forward_disabled.png" />
+    <Content Include="Images\datatable_img\forward_enabled.png" />
+    <Content Include="Images\datatable_img\forward_enabled_hover.png" />
+    <Content Include="Images\datatable_img\sort_asc.png" />
+    <Content Include="Images\datatable_img\sort_asc_disabled.png" />
+    <Content Include="Images\datatable_img\sort_both.png" />
+    <Content Include="Images\datatable_img\sort_desc.png" />
+    <Content Include="Images\datatable_img\sort_desc_disabled.png" />
     <Content Include="Models\DefensoriaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DefensoriaModel.edmx</DependentUpon>
@@ -561,6 +578,7 @@
     <Content Include="Content\scss\_spinning.scss" />
     <Content Include="Content\scss\_stacked.scss" />
     <Content Include="Content\scss\_variables.scss" />
+    <Content Include="Images\datatable_img\Sorting icons.psd" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
     <Content Include="Scripts\dataTables.js" />
@@ -572,6 +590,8 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.colorbox-min.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.tablesorter.filer.js" />
     <Content Include="Scripts\jquery.tablesorter.js" />
     <Content Include="Scripts\jquery.tablesorter.pager.js" />
