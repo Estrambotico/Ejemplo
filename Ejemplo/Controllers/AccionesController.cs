@@ -22,7 +22,13 @@ namespace Ejemplo.Controllers
         {
             return View(repo.ListAccionesProcesales(Etapa, SubEtapa));
         }
+
         
+        public ActionResult Editar(String Id_Accion)
+        {
+            Ca_AccionesProcesales acciones = repo.ObtenerAccionProcesal(Id_Accion);
+            return View(acciones);
+        }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditarAccion(Ca_AccionesProcesales accion)
         {
@@ -84,11 +90,11 @@ namespace Ejemplo.Controllers
                 Ca_AccionesProcesales accion = repo.ObtenerAccionProcesal(Id_Accion);
                 repo.EliminarAccion(accion);
                 repo.GuardarCambios();
-                return Json(new { Exito = true });
+                return Json(new { Exito = true },JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                return Json(new { Exito = false, Mensaje = ex.Message });
+                return Json(new { Exito = false, Mensaje = ex.Message },JsonRequestBehavior.AllowGet);
             }
         }
 

@@ -2,10 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/css/Maquetado.css" rel="stylesheet" />
+    <link href="../../Content/css/Table_Style.css" rel="stylesheet" />
+    <link href="../../Content/css/TableStyle.css" rel="stylesheet" />
  <div class="starter-template">
         <div style="background-color:white;width:1468px; height: 93px;">
             <div class="columna-izq">
-            <h1>Solicitud de </h1><br />
+            <h1>Catalogo de </h1><br />
             <h2>Acciones Procesales</h2>
             </div>
             <div class="columna-der">
@@ -13,7 +15,8 @@
             </div>
             <div class="barracentro verde">
                 </div>
-           <div class="tabla">
+           <div class="barraceentro">
+               <div class="barraceentro2">
               <script type="text/javascript">
                   $(document).ready(function () {
                       $("#tableOne").tablesorter({ debug: false, sortList: [], widgets: ['zebra'] })
@@ -30,12 +33,12 @@
                    <p>
                         <%: Html.ActionLink("Create New", "Create") %>
                     </p>
-                    <table id="tableOne" class="yui"  style="margin: 1% auto; width:100%">
+                    <table id="tableOne" class="yui"  style="margin: 1% auto; width:50%">
     <thead>
         <tr>
             <td class="tableHeader" colspan="5">
                     Nueva cena<a href="/Dinner/NuevaCena">
-                        <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
+                        <img src="../../Content/Table/Mas.png" width="15px" height ="15px" class="ImgNuevo" title="Nueva cena"
                             alt="Dar de alta nueva cena" /></a>
                 </td>
                 <td colspan="5" class="filter" style="border-right: solid 1px #7f7f7f;">
@@ -115,10 +118,15 @@
                                     </td>
                                 </tr>
                             </tfoot>
-                    </table>         
+                    </table> 
+                   </div>        
                 </div>        
                 
         </div>
     </div>
-
+    <script src="../../Scripts/Carranza.js"></script>
+    <script src="../../Scripts/jquery.tablesorter.filer.js"></script>
+    <script src="../../Scripts/jquery.tablesorter.js"></script>
+    <script src="../../Scripts/jquery.tablesorter.pager.js"></script>
+    <script src="../../Scripts/jquery.tablesorter.widgets.js"></script>
 </asp:Content>

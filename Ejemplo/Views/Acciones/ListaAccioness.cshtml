@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Ejemplo.Models.Ca_AccionesProcesales>
+
+@{
+    ViewBag.Title = "ListaAccioness";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListaAccioness</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Etapa_Procesal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_SubEtapa_Procesal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Accion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_AccionProcesal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usu_Act)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Act)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Etapa_Procesal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_SubEtapa_Procesal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Accion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_AccionProcesal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usu_Act)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Act)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Ejemplo.Models.Ca_AccionesProcesales>
+@{
+    ViewBag.Title = "ListaAcciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table id="tableOne" class="yui" width="100%" style="margin: 1% auto;" >
+        <thead>
+        <tr>
+            <td class="tableHeader" colspan="4">
+                    Nueva Accion Procesal<a href="/Acciones/NuevaAccionProcesal">
+                        <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
+                            alt="Nueva Accion Procesal" /></a>
+                </td>
+                <td colspan="5" class="filter" style="border-right: solid 1px #7f7f7f;">
+                    Buscar: <input name="text"  value="" maxlength="30" size="30" type="text" />
+                    <img id="filterClearOne" src="../../Content/Table/cross.png" width="32px"  style="cursor:pointer" height ="32px" title="Clic para limpiar el filtro."
+                        alt="Clear Filter Image" />   
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id_Etapa_Procesal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id_SubEtapa_Procesal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id_Accion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.id_AccionProcesal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Usu_Act)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Act)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                         <tbody>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id_Etapa_Procesal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id_SubEtapa_Procesal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id_Accion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id_AccionProcesal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usu_Act)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fecha_Act)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Editar", new {Id_Accion = item.id_AccionProcesal}, new{@class = "ajax"}) |
+                                @Html.ActionLink("Details", "DetallesAccion", new { Id_Accion = item.id_AccionProcesal}, new{@class = "ajax"}) |
+                                @Html.ActionLink("Delete", "EliminarAccion", new { Id_Accion = item.id_AccionProcesal}, new{@class ="eliminarAccion"})
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                            <tfoot>
+                               
+                            </tfoot>
+                    </table> 
+   
+@section scripts {
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.colorbox-min.js"></script>
+    <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+ 
+        $(document).ready(function () {
+
+            ConstruirTabla();
+
+            function ConstruirTabla() {
+                var table;
+                var asInitVals = new Array();
+                table = $("#tableOne").dataTable({
+                    "sPaginationType": "full_numbers",
+                    "oLanguage": {
+                        "sLengthMenu": 'Mostrar <select>' +
+                            '<option value="5">5</option>' +
+                             '<option value="10">10</option>' +
+                             '<option value="20">20</option>' +
+                             '<option value="30">30</option>' +
+                             '<option value="40">40</option>' +
+                             '<option value="50">50</option>' +
+                             '<option value="-1">Todos</option>' +
+                             '</select> registros'
+                    }
+                });
+            }
+            
+        });
+        $(".ajax").colorbox();
+        $(".ajax").colorbox().resize({ width: 700,height:700 });;
+        $('.eliminarAccion').live('click', function (e) {
+            e.preventDefault();
+            if (confirm("¿Estás seguro de eliminar esta acción?")) {
+                var url = $(this).attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.Exito == true) {
+                            alert("Acción eliminada con éxito");
+                            window.open("/Acciones/ListaAcciones", "_self");
+                        }else
+                            alert("Error al eliminar la acción");
+                    }, error: function (data) {
+                        alert("No se puede eliminar la acción");
+                    }
+                });
+            } else
+                return false;
+        });
+    </script>        
+}

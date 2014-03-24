@@ -409,15 +409,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Content\colorbox\colorbox.css" />
     <Content Include="Content\colorbox\images\border.png" />
     <Content Include="Content\colorbox\images\controls.png" />
     <Content Include="Content\colorbox\images\loading.gif" />
     <Content Include="Content\colorbox\images\loading_background.png" />
     <Content Include="Content\colorbox\images\overlay.png" />
-    <Content Include="Content\css\TableStyle.css" />
-    <Content Include="Content\css\Table_Style.css" />
+    <Content Include="Content\css\demo_page.css" />
+    <Content Include="Content\css\demo_table.css" />
+    <Content Include="Content\css\demo_table_jui.css" />
+    <Content Include="Content\css\jquery.dataTables.css" />
+    <Content Include="Content\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\js\jquery.dataTables.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\TableStyle.css" />
+    <Content Include="Content\Table_Style.css" />
     <Content Include="Content\TableSorterStyle.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
@@ -493,6 +500,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DefensoriaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\back_disabled.png" />
+    <Content Include="Images\back_enabled.png" />
+    <Content Include="Images\back_enabled_hover.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\forward_disabled.png" />
+    <Content Include="Images\forward_enabled.png" />
+    <Content Include="Images\forward_enabled_hover.png" />
+    <Content Include="Images\sort_asc.png" />
+    <Content Include="Images\sort_asc_disabled.png" />
+    <Content Include="Images\sort_both.png" />
+    <Content Include="Images\sort_desc.png" />
+    <Content Include="Images\sort_desc_disabled.png" />
     <Content Include="Img\1395183562_183249.ico" />
     <Content Include="Img\1395183732_183573.ico" />
     <Content Include="Img\bg_footer.gif" />
@@ -522,6 +541,7 @@
     </Content>
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Images\Sorting icons.psd" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -546,7 +566,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Views\Acciones\Catalogo.aspx" />
-    <Content Include="Views\Acciones\ListaAcciones.aspx" />
+    <Content Include="Views\Acciones\ListaAcciones2.aspx" />
     <Content Include="Views\Acciones\NuevaAccionProcesal.aspx" />
     <Content Include="Views\Acciones\Index.aspx" />
     <Content Include="Web.config" />
@@ -589,6 +609,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Plantilla\Master.Master" />
+    <Content Include="Views\Acciones\ListaAcciones.cshtml" />
+    <Content Include="Views\Acciones\ListaAccioness.cshtml" />
+    <Content Include="Views\Acciones\DetallesAccion.cshtml" />
+    <Content Include="Views\Acciones\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

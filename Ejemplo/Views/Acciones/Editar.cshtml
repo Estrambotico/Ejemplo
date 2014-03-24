@@ -1,0 +1,86 @@
+﻿@model Ejemplo.Models.Ca_AccionesProcesales
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <form name="FormAcciones" id="FormAcciones" method ="POST">
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>Editar</legend>
+    
+
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Descripcion)
+            </div>
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.id_AccionProcesal)
+                @Html.HiddenFor(model => model.Id_SubEtapa_Procesal)
+                @Html.HiddenFor(model => model.Id_Accion)
+                @Html.HiddenFor(model => model.id_AccionProcesal)
+                @Html.EditorFor(model => model.Descripcion)
+                @Html.ValidationMessageFor(model => model.Descripcion)
+                @Html.HiddenFor(model => model.Usu_Act)
+                @Html.HiddenFor(model => model.Fecha_Act)
+                
+
+
+            </div>
+ 
+    
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.Fecha_Act)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Fecha_Act)
+                @Html.ValidationMessageFor(model => model.Fecha_Act)
+            </div>*@
+    
+            <p>
+                <input type="submit" value="Guardar" id="guardar"/>
+            </p>
+        </fieldset>
+        </form>
+    
+    <div>
+        @Html.ActionLink("Back to List", "ListaAcciones")
+    </div>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#FormAcciones").submit(function (e) {
+            e.preventDefault();
+        }   );
+            $("input#guardar").click(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Acciones/EditarAccion",
+                data: $("#FormAcciones").serialize(),
+                success: function (data) {
+                    if (data.Exito == false) {
+                        alert(data.Mensaje);
+                    } else {
+                        alert("Se Edito Correctamente");
+                    }
+                }
+            });
+        });
+        
+        });
+</script>
+</body>
+</html>
