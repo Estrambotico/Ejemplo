@@ -1,69 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Master/Master.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Ejemplo.Models.Ca_AccionesProcesales>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../../Content/TableSorterStyle.css" rel="stylesheet" />
-      <link href="../../Content/Table_Style.css" rel="stylesheet" />
-      <link href="../../Content/TableStyle.css" rel="stylesheet" />
+    
     <link href="../../Content/colorbox/colorbox.css" rel="stylesheet" />
-    <script src="../../Scripts/jquery.colorbox-min.js"></script>
-    <script src="../../Scripts/jquery.colorbox.js"></script>
      <script src="../../Scripts/Carranza.js"></script>
-      <script src="../../Scripts/jquery.tablesorter.js"></script>
-      <script src="../../Scripts/jquery.tablesorter.pager.js"></script>
-      <script src="../../Scripts/jquery.tablesorter.widgets.js"></script>
-      <script src="../../Scripts/jquery.tablesorter.filer.js"></script>
+    <script src="../../Scripts/DataTable/jquery.js"></script>
+    <script src="../../Scripts/jquery.colorbox-min.js"></script>
+    <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-     <script type="text/javascript">
-         $(document).ready(function () {
-
-             $(".ajax").colorbox();
-             $("#tableOne").tablesorter({ debug: false, sortList: [], widgets: ['zebra'] })
-                       .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
-                       .tablesorterFilter({
-                           filterContainer: $("#filterBoxOne"),
-                           filterClearContainer: $("#filterClearOne"),
-                           filterColumns: [0, 1, 2, 3],  // Agregar tantos como campos necesarios
-                           filterCaseSensitive: false
-                       });
-
-
-
-         });
-         $(function () {
-             var name = $("#name"),
-               email = $("#email"),
-               password = $("#password"),
-               allFields = $([]).add(name).add(email).add(password),
-               tips = $(".validateTips");
-
-            
-
-             $("#dialog-form").dialog({
-                 autoOpen: false,
-                 height: 300,
-                 width: 350,
-                 modal: true,
-                 buttons: {
-                     "Create an account": function () {
-                         
-                     },
-                     Cancel: function () {
-                         $(this).dialog("close");
-                     }
-                 },
-                 close: function () {
-                     allFields.val("").removeClass("ui-state-error");
-                 }
-             });
-
-             $("#create-user")
-               .button()
-               .click(function () {
-                   $("#dialog-form").dialog("open");
-               });
-         });
-
-</script>
+   
+    <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
+    
     <div class="container">
         <div class="row starter-template titulo">
             <div class="col-md-12 letra_titulo">
@@ -74,48 +21,29 @@
         
         <div class="row">
             <div class="col-md-12">
-                 <%: Html.ActionLink("Nueva", "NuevaAccionProcesal") %>
-                <button id="create-user">Create new user</button>
+                
             </div>
         </div>
-<table id="tableOne" class="yui" width="100%" style="margin: 1% auto;">
+<table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
     <thead>
-        <tr>
-            <td class="tableHeader" colspan="4">
-                    Nueva cena<a href="/Acciones/NuevaAccionProcesal/">
-                        <img src="../../Content/Imagenes/add.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
-                            alt="Dar de alta nueva accion" /></a>
-                </td>
-                <td colspan="4" class="filter" style="border-right: solid 1px #7f7f7f;">
-                    Buscar: <input name="text"  value="" maxlength="30" size="30" type="text" />
-                    <img id="filterClearOne" src="../../Content/Imagenes/clear.png" width="32px"  style="cursor:pointer" height ="32px" title="Clic para limpiar el filtro."
-                        alt="Clear Filter Image" />   
-                </td>
-            </tr>
-    
+       
     <tr>
-        <th>
-            ID_E
-          
+        <th colspan="4">
+               Nueva<a href="/Acciones/NuevaAccionProcesal" class="ajax">
+                        <img src="../../Content/Imagenes/add.png" class="ImgNuevo" title="Dar de alta nuevo.."
+                            alt="Dar de alta nuevo" /></a>
         </th>
+    </tr>
+    <tr>
+       
         <th>
-            ID_SUB
-           
-        </th>
-        <th>
-            ID_ACCION
-         
-        </th>
-        <th>
-            ACCION PRO
+            ACCION PROCESAL
           
         </th>
         <th>DESCRIPCION
         
         </th>
-        <th>USUARIO
-           
-        </th>
+       
         <th>FECHA
            
         </th>
@@ -125,50 +53,39 @@
     <tbody>
 <% foreach (var item in Model) { %>
     <tr>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Id_Etapa_Procesal) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Id_SubEtapa_Procesal) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Id_Accion) %>
-        </td>
+       
         <td>
             <%: Html.DisplayFor(modelItem => item.id_AccionProcesal) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Descripcion) %>
         </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Usu_Act) %>
-        </td>
+        
         <td>
             <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
         </td>
         <td>
-            <%: Html.ActionLink("Editar", "Editar", new {Id_Accion=item.id_AccionProcesal}) %> |
-            <a class='ajax' href="/Acciones/DetallesAccion/000001" title="Detalles">Detalles</a>
+            <%: Html.ActionLink("Editar", "Editar", new {Id_Accion=item.id_AccionProcesal}, new { @class="ajax" }) %> |
+            <%: Html.ActionLink("Detalles", "DetallesAccion", new { Id_Accion = item.id_AccionProcesal }, new { @class="ajax" })%>
+            
           |
-            <%: Html.ActionLink("Eliminar", "EliminarAccion", new { Id_Accion = item.id_AccionProcesal })%>
+            <%: Html.ActionLink("Eliminar", "EliminarAccion", new { Id_Accion = item.id_AccionProcesal }, new { @class = "eliminar" })%>
+           
+           
          
         </td>
+         
     </tr>
+       
+        
 <% } %>
     </tbody>
     <tfoot>
-            <tr id="pagerOne">
-                <td colspan="10" style="border-right: solid 1px #7f7f7f;">
-                    <img src="../../Content/Table/first.png" class="first" alt="" width="32px" height ="32px" style="cursor:pointer" />
-                    <img src="../../Content/Table/prev.png" class="prev" alt="" width="32px" height ="32px" style="cursor:pointer"/>
-                    <input type="text" class="pagedisplay" />
-                    <img src="../../Content/Table/next.png" class="next" alt="" width="32px" height ="32px" style="cursor:pointer"/>
-                    <img src="../../Content/Table/last.png" class="last" alt="" width="32px" height ="32px" style="cursor:pointer"/>
-                    <select class="pagesize">
-                        <option selected="selected" value="10">10</option>
-                        <option selected="selected" value="5">5</option>
-                    </select>
-                </td>
+            <tr><th rowspan="1" colspan="1"><input type="text" name="search_engine" value="Accion procesal" class="search_init"></th>
+                <th rowspan="1" colspan="1"><input type="text" name="search_browser" value="Descripcion" class="search_init"></th>
+                <th rowspan="1" colspan="1"><input type="text" name="search_platform" value="Fecha" class="search_init"></th>
+                <th></th>
+
             </tr>
         </tfoot>
 </table>
@@ -246,6 +163,113 @@
 
             </div>
     </div>
+     <script type="text/javascript">
+         var asInitVals = new Array();
+         $(document).ready(function () {
+             $(".ajax").colorbox().resize({ width: "600px", height: "600px" });
+             var tabla = $('#tableOne').dataTable({
+                 
+                 "sPaginationType": "full_numbers",
+               
+                
+                 "oLanguage": {
+                     "oPaginate": {
+                         "sPrevious": "Anterior",
+                         "sNext": "Siguiente",
+                         "sLast": "Ultima",
+                         "sFirst": "Primera"
+                     },
+
+                     "sLengthMenu": 'Mostrar <select>' +
+                     '<option value="5">5</option>' +
+                     '<option value="10">10</option>' +
+                     '<option value="20">20</option>' +
+                     '<option value="30">30</option>' +
+                     '<option value="40">40</option>' +
+                     '<option value="50">50</option>' +
+                     '<option value="-1">Todos</option>' +
+                     '</select> registros',
+
+                     "sInfo": "Mostrando del _START_ a _END_ (Total: _TOTAL_ resultados)",
+
+                     "sInfoFiltered": " - filtrados de _MAX_ registros",
+
+                     "sInfoEmpty": "No hay resultados de búsqueda",
+
+                     "sZeroRecords": "No hay registros a mostrar",
+
+                     "sProcessing": "Espere, por favor...",
+
+                     "sSearch": "Buscar:",
+
+                 }
+            });
+            $("tfoot input").keyup(function () {
+                /* Filter on the column (the index) of this element */
+                tabla.fnFilter(this.value, $("tfoot input").index(this));
+            });
+
+
+
+             /*
+              * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
+              * the footer
+              */
+            $("tfoot input").each(function (i) {
+                asInitVals[i] = this.value;
+            });
+
+            $("tfoot input").focus(function () {
+                if (this.className == "search_init") {
+                    this.className = "";
+                    this.value = "";
+                }
+            });
+
+            $("tfoot input").blur(function (i) {
+                if (this.value == "") {
+                    this.className = "search_init";
+                    this.value = asInitVals[$("tfoot input").index(this)];
+                }
+            });
+            
+             $(".eliminar").on("click", function (e) {
+                
+                 e.preventDefault();
+                 if (confirm('¿Seguro que desea eliminar?')) {
+                     var url = $(this).attr('href');
+                     $.ajax({
+                         type: "GET",
+                         datatype: "json",
+                         url: url,
+
+                         success: function (result) {
+                             if (result.Exito == false) {
+                                 alert("'Error" + Mensaje + "'");
+                             }
+                             else {
+                                 alert('Registro elimado correctamente');
+                                 $(this).parent().parent().remove();
+                                 window.open("/Acciones/ListaAcciones", "_self");
+                              
+                                 
+                             }
+                             
+                         }
+
+                     });
+
+                 }
+                 else {
+                     return false;}
+
+                 
+                
+             });
+
+         });
+
+</script>
 
 
 

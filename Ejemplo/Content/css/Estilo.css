@@ -119,6 +119,9 @@ ul {
     text-decoration:none;
   
 }
+.txt_gd {
+    width:450px;
+}
 .normal {
     width: 1200px;
     border: 1px solid #000;

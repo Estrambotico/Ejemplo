@@ -98,6 +98,8 @@ namespace Ejemplo.Controllers
 
         public ActionResult DetallesAccion(String Id_Accion)
         {
+            var etapas = repo.ListaEtapas().ToList();
+            ViewData["Etapas"] = etapas;
             return View(repo.ObtenerAccionProcesal(Id_Accion));
         }
 

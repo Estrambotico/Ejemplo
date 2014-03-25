@@ -50,9 +50,10 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
+    width:80px;
   display: inline-block;
-  height: 20px;
-  padding: 4px 6px;
+  height: 30px;
+  padding: 2px 2px;
   margin-bottom: 9px;
   font-size: 14px;
   line-height: 20px;
