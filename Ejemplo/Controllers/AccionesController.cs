@@ -38,7 +38,6 @@ namespace Ejemplo.Controllers
                  {
                      Area = new PlotOptionsArea
                      {
-                         PointStart = new PointStart(2004),
                          Marker = new PlotOptionsAreaMarker
                          {
                              Enabled = false,
