@@ -594,6 +594,11 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
     <Content Include="Scripts\dataTables.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.css" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Scripts\fullcalendar\gcal.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -667,6 +672,7 @@
     <Content Include="Views\Acciones\EditarAccion.cshtml" />
     <Content Include="Views\Acciones\ListaAcciones2.cshtml" />
     <Content Include="Views\Acciones\Grafica.cshtml" />
+    <Content Include="Views\Acciones\Calendario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
