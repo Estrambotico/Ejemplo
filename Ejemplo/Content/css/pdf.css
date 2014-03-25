@@ -1,0 +1,11 @@
+﻿h2 {
+    color:blue;
+}
+.titulo {
+    background-image:url("~/Content/imagenes/mundo.png");
+    background-repeat:no-repeat;
+    background-color:aqua;
+}
+.table {
+    border:double;
+}

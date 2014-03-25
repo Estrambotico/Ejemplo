@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Ejemplo.Models.Ca_AccionesProcesales>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/pdf.css" rel="stylesheet" />
+
+    
+</head>
+<body>
+    <div class="titulo">
+
+    </div>
+    <h1 align="center">Reporte de acciones procesales</h1>
+    
+        <br />
+        <label>Fecha del reporte:</label>
+        <label>@DateTime.Now.ToString()</label>
+    <table id="tableOne" class="table" width="100%" border="1" style="padding:8px;">
+    <thead>
+       
+    
+    <tr >
+       <th bgcolor="lightblue"  >DESCRIPCION
+        
+        </th>
+       
+        <th bgcolor="lightblue"  >
+            ACCION PROCESAL
+          
+        </th>
+        
+        <th bgcolor="lightblue">FECHA
+           
+        </th>
+        
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) { 
+    <tr>
+       <td align="left">
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.id_AccionProcesal)
+        </td>
+        
+        
+        <td >
+            @Html.DisplayFor(modelItem => item.Fecha_Act)
+        </td>
+        
+         
+    </tr>
+       
+        
+ }
+    </tbody>
+    
+</table>
+</body>
+</html>

@@ -28,10 +28,13 @@
     <thead>
        
     <tr>
-        <th colspan="4">
+        <th colspan="2">
                Nueva<a href="/Acciones/NuevaAccionProcesal" class="ajax">
                         <img src="../../Content/Imagenes/add.png" class="ImgNuevo" title="Dar de alta nuevo.."
                             alt="Dar de alta nuevo" /></a>
+        </th>
+        <th colspan="2">
+             <%: Html.ActionLink("Generar PDF", "PDF") %>
         </th>
     </tr>
     <tr>

@@ -62,3 +62,5 @@ C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\es\WebMatrix.WebData.resourc
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.csprojResolveAssemblyReference.cache
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.dll
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.pdb
+C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\itextsharp.dll
+C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\RazorPDF.dll

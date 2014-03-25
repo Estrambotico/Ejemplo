@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Ejemplo.Models.Repositorios;
 using Ejemplo.Models;
 using System.Web.Helpers;
+using RazorPDF;
 
 namespace Ejemplo.Controllers
 {
@@ -54,6 +55,11 @@ namespace Ejemplo.Controllers
             {
                 return Json(new { Exito = false, Mensaje = ex.Message });
             }
+        }
+        public ActionResult PDF(int? Etapa, int? SubEtapa)
+        {
+            return new RazorPDF.PdfResult(repo.ListAccionesProcesales(Etapa, SubEtapa));
+        
         }
 
         public ActionResult NuevaAccionProcesal()
