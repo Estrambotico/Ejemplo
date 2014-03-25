@@ -4,20 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<div class="centro">
 <table id="tableOne" class="yui" width="100%" style="margin: 1% auto;" >
         <thead>
         <tr>
             <td class="tableHeader" colspan="4">
-                    Nueva Accion Procesal<a href="/Acciones/NuevaAccionProcesal">
-                        <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
-                            alt="Nueva Accion Procesal" /></a>
-                </td>
-                <td colspan="5" class="filter" style="border-right: solid 1px #7f7f7f;">
-                    Buscar: <input name="text"  value="" maxlength="30" size="30" type="text" />
-                    <img id="filterClearOne" src="../../Content/Table/cross.png" width="32px"  style="cursor:pointer" height ="32px" title="Clic para limpiar el filtro."
-                        alt="Clear Filter Image" />   
-                                </td>
+                    <a href="/Acciones/NuevaAccionProcesal">Nueva Accion Procesal</a>
                             </tr>
                         <tr>
                             <th>
@@ -80,6 +72,7 @@
                                
                             </tfoot>
                     </table> 
+    </div>
    
 @section scripts {
     <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
@@ -97,17 +90,8 @@
                 var asInitVals = new Array();
                 table = $("#tableOne").dataTable({
                     "sPaginationType": "full_numbers",
-                    "oLanguage": {
-                        "sLengthMenu": 'Mostrar <select>' +
-                            '<option value="5">5</option>' +
-                             '<option value="10">10</option>' +
-                             '<option value="20">20</option>' +
-                             '<option value="30">30</option>' +
-                             '<option value="40">40</option>' +
-                             '<option value="50">50</option>' +
-                             '<option value="-1">Todos</option>' +
-                             '</select> registros'
-                    }
+                    "iDisplayLength": 5,
+                    "aLengthMenu": [[5, 10, 15, 20, 25, 50, 100, -1], [5, 10, 15, 20, 25, 50, 100, "Todos"]]
                 });
             }
             

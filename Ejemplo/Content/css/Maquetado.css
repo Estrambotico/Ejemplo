@@ -332,7 +332,7 @@
 			border:groove;
 			position:relative;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.5ex;
+            font-size: 1.3em;
             float: left;
             z-index: 10000;
             width:57%;
@@ -353,6 +353,14 @@
 			left:30%;
 			width:60%;
         }
+			.centro
+		{
+				width:70%;
+				left:10%;
+				right:10%;
+				margin-left:12%;
+				margin-top:10%;
+		}
 
 @media only screen and (max-width:635px)
 {
@@ -456,7 +464,7 @@
 		 left:5%;
 			
 	}
-@media only screen and (min-width:990px)
+@media only screen and (min-width:950px)
 {
 
 		.botones3
@@ -491,13 +499,20 @@
 		 left:5%;
 			
 	}
+	.barraceentro
+		{
+			width:59%;
+			height: 250px;
+			left:8%;
+		}
 
-@media only screen and (min-width:300px) and (max-width:990px)
+@media only screen and (min-width:300px) and (max-width:950px)
 {
 		.barraceentro
 		{
-			width:60%;
+			width:35%;
 			height: 250px;
+			left:2%
 		}
 			.logoGob
 	{
@@ -528,25 +543,46 @@
 	}
 
 }
+@media only screen and (min-width:1200px)
+{
+	.barraceentro
+		{
+			width:70%;
+			height: 250px;
+			left:29%;
+		}
+}
+@media only screen and (max-width:1300px)
+{
+			.centro
+		{
+				width:70%;
+				left:10%;
+				right:10%;
+				margin-left:12%;
+				margin-top:20%;
+		}
+}
 @media only screen and (max-width:1100px)
 {
-		.barraceentro
+		/*.barraceentro
 		{
-			width:65%;
+			width:52%;
 			height: 250px;
-		}
+			left:9%;
+		}*/
 			.logoGob
 	{
-		width:30%;
+		width:15%;
 		height:20%;
 		left:25px;
 		padding-top:15px;
 	}
 	.footer
 	{
-		top: 75%;
-		left: 5%;
-		height:204px;
+		top: 70%;
+		left:5%;
+		height:300px;
 		font-size:10px;
 		
 			
@@ -558,12 +594,5 @@
 		 margin-left:10%;
 			
 	}
-			.footer
-	{
-		 top: 70%;
-		 left:5%;
-			
-	}
-
 }
 
