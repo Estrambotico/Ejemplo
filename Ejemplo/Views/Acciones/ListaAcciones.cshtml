@@ -11,6 +11,7 @@
      Nueva acción procesal<a href="/Acciones/NuevaAccionProcesal" class="ajax_nueva_accion">
                         <img src="../../Content/Table/Mas.png" width="32px" height ="32px" class="ImgNuevo" title="Nueva cena"
                             alt="Dar de alta nueva cena" /></a>
+    <div align="right"><a href="/Acciones/PdfAcciones" target="_blank"><img src="~/Images/iconos/pdf.png" width="48px" height="48px"/>Generar PDF</a></div>
     <thead class="cabecera_tabla">
         <tr>
             <td class="tableHeader" colspan="2">
@@ -90,11 +91,12 @@
                             alert("Se ha actualizado correctamente");
                             window.open('/Acciones/ListaAcciones','_self');
                         }
+                    }, error: function (result) {
+                        alert("Ocurriò un error");
                     }
                 });
             });
-            
-            ConstruirTabla();
+             ConstruirTabla();
             $(".ajax").colorbox();
             $(".ajax_nueva_accion").colorbox();
             $('.eliminarAccion').live('click', function (e) {

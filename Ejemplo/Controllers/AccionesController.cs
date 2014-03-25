@@ -5,8 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using Ejemplo.Models.Repositorios;
 using Ejemplo.Models;
-using System.Web.Helpers;
-
+using MvcRazorToPdf;
+using DotNet.Highcharts;
+using DotNet.Highcharts.Enums;
+using DotNet.Highcharts.Helpers;
+using DotNet.Highcharts.Options;
+using Point = DotNet.Highcharts.Options.Point;
 namespace Ejemplo.Controllers
 {
     public class AccionesController : Controller
@@ -18,9 +22,53 @@ namespace Ejemplo.Controllers
         {
             return View();
         }
+
+        public ActionResult Grafica()
+        {
+            Highcharts chart = new Highcharts("chart")
+                 .InitChart(new Chart { DefaultSeriesType = ChartTypes.Line})
+                 .SetTitle(new Title { Text = "Acciones procesales" })
+                 .SetSubtitle(new Subtitle { Text = "" })
+                 .SetXAxis(
+                 new XAxis{
+                     Categories = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }
+                 })
+                 .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Cantidad" }, Labels = new YAxisLabels { Formatter = "function() { return Highcharts.numberFormat(this.value, 0);}" } })
+                 .SetPlotOptions(new PlotOptions
+                 {
+                     Area = new PlotOptionsArea
+                     {
+                         PointStart = new PointStart(2004),
+                         Marker = new PlotOptionsAreaMarker
+                         {
+                             Enabled = false,
+                             Symbol = "circle",
+                             Radius = 2,
+                             States = new PlotOptionsAreaMarkerStates
+                             {
+                                 Hover = new PlotOptionsAreaMarkerStatesHover { Enabled = true }
+                             }
+                         }
+                     }
+                 })
+                 .SetSeries(new []
+                                { new Series { Name = "Colima", Data = new Data(new object[] { 5, 3, 4, 7, 2, 5, 8, 4,6,4,3,8}) },
+                                  new Series { Name = "Jalisco", Data = new Data(new object[] { 2, 6, 9, 2, 1, 5, 8, 2,6,2,5,9 })} ,
+                                  new Series { Name = "Michoacán", Data = new Data(new object[] { 2, 5, 23, 10, 4, 23, 4,1,4,2,8,7 })}
+                                });
+
+            return View(chart);
+        }
+
         public ActionResult ListaAcciones(int? Etapa, int? SubEtapa)
         {
+           // return new PdfActionResult("ListaAcciones2",repo.ListAccionesProcesales(Etapa, SubEtapa));
             return View(repo.ListAccionesProcesales(Etapa, SubEtapa));
+        }
+
+        public ActionResult PdfAcciones(int? Etapa, int? SubEtapa)
+        {
+            return new PdfActionResult("ListaAcciones2",repo.ListAccionesProcesales(Etapa, SubEtapa));
         }
 
         public ActionResult EditarAccion(String Id_Accion)
@@ -32,6 +80,7 @@ namespace Ejemplo.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
         public ActionResult EditarAccion(Ca_AccionesProcesales accion)
         {
             try

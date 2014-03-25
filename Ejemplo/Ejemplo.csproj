@@ -39,7 +39,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\..\..\..\..\Downloads\DotNet.Highcharts.2.0\DotNet.Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.4.5\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>..\packages\itextsharp.xmlworker.5.4.5\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcRazorToPdf">
+      <HintPath>..\packages\MvcRazorToPdf.1.0.0\lib\40\MvcRazorToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -582,6 +594,7 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
     <Content Include="Scripts\dataTables.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -652,6 +665,8 @@
     <Content Include="Views\Acciones\DetallesAccion.cshtml" />
     <Content Include="Views\Acciones\vista.cshtml" />
     <Content Include="Views\Acciones\EditarAccion.cshtml" />
+    <Content Include="Views\Acciones\ListaAcciones2.cshtml" />
+    <Content Include="Views\Acciones\Grafica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
