@@ -172,5 +172,13 @@ namespace Ejemplo.Controllers
 
             return View();
         }
+
+        //Acción para mostrar el colorbox con las horas del día seleccionado
+        public ActionResult MuestraDia(String fecha){
+            ViewData["dia"] = fecha;
+            Response.Write(fecha);
+            return View();
+        }
     }
+
 }
