@@ -74,6 +74,10 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="REST, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\REST.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -187,6 +191,10 @@
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WsCurp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WsCurp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
@@ -197,6 +205,7 @@
     <Compile Include="Controllers\AccionesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\SignaIRController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,6 +305,7 @@
     <Compile Include="Models\ca_Usuarios.cs">
       <DependentUpon>DefensoriaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases.cs" />
     <Compile Include="Models\DefensoriaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -351,6 +361,9 @@
       <DependentUpon>DefensoriaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositorios\RepoDenfensoria.cs" />
+    <Compile Include="Models\Repositorios\RepoDomicilios.cs" />
+    <Compile Include="Models\Repositorios\RepoPersonas.cs" />
+    <Compile Include="Models\ServiceConsumer.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DefensoriaModel.tt</DependentUpon>
     </Compile>
@@ -611,6 +624,7 @@
     <Content Include="Content\scss\_stacked.scss" />
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="Images\datatable_img\Sorting icons.psd" />
+    <Content Include="Content\jquery.ui.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Carranza.js" />
     <Content Include="Scripts\dataTables.js" />
@@ -696,6 +710,9 @@
     <Content Include="Views\Acciones\Grafica.cshtml" />
     <Content Include="Views\Acciones\Calendario.cshtml" />
     <Content Include="Views\Acciones\MuestraDia.cshtml" />
+    <Content Include="Views\Personas\Index.cshtml" />
+    <Content Include="Views\Personas\Nueva.cshtml" />
+    <Content Include="Views\Personas\dialogo_persona.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

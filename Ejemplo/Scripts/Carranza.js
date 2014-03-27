@@ -16,8 +16,9 @@ var ajaxJson = function (URL, DATA, dr, seleccion, callback) {
     });
 }
 
-var callBackLlenarSelect = function(result, dr, seleccion) {
+var callBackLlenarSelect = function (result, dr, seleccion) {
     $("#" + dr).empty();
+    var elemento = $("#" + dr);
     if (result.length != 0) {
         $("#" + dr).append("<option value=0>Seleccione...</option>");
         $.each(result, function(i, item) {

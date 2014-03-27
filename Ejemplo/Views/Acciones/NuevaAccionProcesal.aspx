@@ -44,30 +44,12 @@
                             </select>
 						</div>
 					</div>
-					<!--<div class="form-group">
-						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right">Clave acción:</label>
-						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
-							<%: Html.EditorFor(model => model.Id_Accion) %>
-						</div>
-					</div>-->
-					<!--<div class="form-group">
-						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 control-label text-right">Clave acción procesal:</label>
-						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
-							<%: Html.EditorFor(model => model.id_AccionProcesal) %>
-						</div>
-					</div>-->
 					<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Descripción:</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
 							<%: Html.EditorFor(model => model.Descripcion) %>
 						</div>
 					</div>
-                    <!--<div class="form-group">
-						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">¿Usuario activo?:</label>
-						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
-							<%: Html.EditorFor(model => model.Usu_Act) %>
-						</div>
-					</div>-->
 					<div class="form-group">
 						<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">&nbsp;</label>
 						<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
