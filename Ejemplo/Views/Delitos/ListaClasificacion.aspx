@@ -128,6 +128,11 @@
             $(".eliminar").on("click", function (e) {
 
                 e.preventDefault();
+                var eliminar = this;
+                console.log($(this).parent().get(0));
+                var url = $(this).attr('href');
+                var aPos = tabla.fnGetPosition($(this).parent().get(0));
+                console.log(aPos);
                 if (confirm('¿Seguro que desea eliminar?')) {
                     var url = $(this).attr('href');
                     $.ajax({
@@ -140,9 +145,9 @@
                                 alert("'Error" + Mensaje + "'");
                             }
                             else {
+                                tabla.fnDeleteRow(aPos[0]);
                                 alert('Registro elimado correctamente');
-                                $(this).parent().parent().remove();
-                                window.open("/Delitos/ListaClasificacion", "_self");
+                                var t = $("#tableOne").dataTable();
 
 
                             }

@@ -137,6 +137,12 @@
             $(".eliminar").on("click", function (e) {
 
                 e.preventDefault();
+               
+                var eliminar = this;
+                console.log($(this).parent().get(0));
+                var url = $(this).attr('href');
+                var aPos = tabla.fnGetPosition($(this).parent().get(0));
+                console.log(aPos);
                 if (confirm('¿Seguro que desea eliminar?')) {
                     var url = $(this).attr('href');
                     $.ajax({
@@ -146,10 +152,9 @@
 
                         success: function (result) {
                             if (result.Exito == true) {
+                                tabla.fnDeleteRow(aPos[0]);
                                 alert('Registro elimado correctamente');
-
-                                window.open("/Delitos/IndexDelitos", "_self");
-
+                                var t = $("#tableOne").dataTable();
                             }
                             else {
                                 alert("'Error" + Mensaje + "'");
