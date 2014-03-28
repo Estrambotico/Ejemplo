@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="<?php echo base_url(); ?>"/>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,13 +22,25 @@
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="../../Content/js/bootstrap.min.js"></script>
       <script src="../../Scripts/Carranza.js"></script>
+       <link href="../../Content/colorbox/colorbox.css" rel="stylesheet" />
+     
+    <script src="../../Scripts/DataTable/jquery.js"></script>
+    <script src="../../Scripts/jquery.colorbox-min.js"></script>
+    <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
+       <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   
+    <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
      
 </head>
   <body>
+      
+      
       <div class="container">
-
+        <div class="Titulo" style="width:100%">
+            <h1>SISTEMA DE CATALOGOS PERRISIMOS</h1>
+        </div>
      
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
 	<div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -38,14 +50,16 @@
       </button>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+       
+        <li><a href="/Delitos/ListaClasificacion">Clasificacion</a></li>
+          <li><a href="/Delitos/Index">Grupos</a></li>
+          <li><a href="/Delitos/IndexDelitos">Delitos</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Delitos<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="/Delitos/ListaClasificacion">Clasificacion</a></li>
+            <li><a href="/Delitos/Index">Grupo</a></li>
+            <li><a href="/Delitos/IndexDelitos">Delito</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li class="divider"></li>

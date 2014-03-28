@@ -23,6 +23,8 @@ namespace Ejemplo.Controllers
         {
             return View(repo.ListAccionesProcesales(Etapa, SubEtapa));
         }
+        
+
         public ActionResult Editar(String Id_Accion)
         {
             var etapas = repo.ListaEtapas().ToList();
@@ -56,6 +58,9 @@ namespace Ejemplo.Controllers
                 return Json(new { Exito = false, Mensaje = ex.Message });
             }
         }
+        
+
+
         public ActionResult PDF(int? Etapa, int? SubEtapa)
         {
             return new RazorPDF.PdfResult(repo.ListAccionesProcesales(Etapa, SubEtapa));
@@ -113,6 +118,7 @@ namespace Ejemplo.Controllers
         public ActionResult ListaEtapas()
         {
             IQueryable<Ca_AccionesProcesales> Etapas = repo.ListaEtapas();
+            
             SelectList ls = new SelectList(Etapas, "Id_Etapa_Procesal", "Descripcion");
             return new JsonResult { Data = ls };
         }

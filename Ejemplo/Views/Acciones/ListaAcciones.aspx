@@ -2,21 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
-    <link href="../../Content/colorbox/colorbox.css" rel="stylesheet" />
-     <script src="../../Scripts/Carranza.js"></script>
-    <script src="../../Scripts/DataTable/jquery.js"></script>
-    <script src="../../Scripts/jquery.colorbox-min.js"></script>
-    <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
-       <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
    
-    <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
     
     <div class="container">
         <div class="row starter-template titulo">
-            <div class="col-md-12 letra_titulo">
-                <h2>Lista de Acciones Procesales</h2>
-            </div>
+        <div class="col-md-12 letra_titulo">
+            <h2>Lista de Acciones Procesales</h2>
         </div>
+    </div>
         <br />
         
         <div class="row">

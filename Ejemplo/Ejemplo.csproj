@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccionesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DelitosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -583,6 +584,20 @@
     <Content Include="Views\Acciones\Index.aspx" />
     <Content Include="Views\Acciones\ListaAcciones.aspx" />
     <Content Include="Views\Acciones\NuevaAccionProcesal.aspx" />
+    <Content Include="Views\Delitos\DetallesClasificacion.aspx" />
+    <Content Include="Views\Delitos\DetallesDelitos.aspx" />
+    <Content Include="Views\Delitos\DetallesGrupos.aspx" />
+    <Content Include="Views\Delitos\EditarClasificacion.aspx" />
+    <Content Include="Views\Delitos\EditarDelito.aspx" />
+    <Content Include="Views\Delitos\EditarGrupo.aspx" />
+    <Content Include="Views\Delitos\IndexDelitos.aspx" />
+    <Content Include="Views\Delitos\Lista.aspx" />
+    <Content Include="Views\Delitos\ListaClasificacion.aspx" />
+    <Content Include="Views\Delitos\ListaDelitos.aspx" />
+    <Content Include="Views\Delitos\ListaGrupos.aspx" />
+    <Content Include="Views\Delitos\NuevaClasificacion.aspx" />
+    <Content Include="Views\Delitos\NuevoDelito.aspx" />
+    <Content Include="Views\Delitos\NuevoGrupo.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

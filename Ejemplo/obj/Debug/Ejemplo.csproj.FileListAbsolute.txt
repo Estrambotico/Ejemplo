@@ -59,8 +59,8 @@ C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\es\System.Web.WebPages.Razor
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\es\WebMatrix.Data.resources.dll
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\es\WebMatrix.WebData.resources.dll
-C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.csprojResolveAssemblyReference.cache
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.dll
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.pdb
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\itextsharp.dll
 C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\bin\RazorPDF.dll
+C:\Users\LARIOS\Desktop\Ejemplo\Ejemplo\Ejemplo\obj\Debug\Ejemplo.csprojResolveAssemblyReference.cache

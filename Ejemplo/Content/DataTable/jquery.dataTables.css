@@ -5,7 +5,8 @@
 table.dataTable {
 	margin: 0 auto;
 	clear: both;
-	width: 100%;
+	width: 100%;b
+er:eleltabl
 }
 
 table.dataTable thead th {
@@ -14,7 +15,7 @@ table.dataTable thead th {
 	font-weight: bold;
 	cursor: pointer;
 	*cursor: hand;
-    background-color:#1C1C1C;
+    background-color:#2FAEC4;
     color:white;
 }
 
@@ -35,13 +36,13 @@ table.dataTable td.dataTables_empty {
 	text-align: center;
 }
 
-table.dataTable tr.odd { background-color: #56AE73; }
+table.dataTable tr.odd { background-color: #E3E6E7; }
 table.dataTable tr.even { background-color: white; }
 
-table.dataTable tr.odd td.sorting_1 { background-color: #29964D; }
+table.dataTable tr.odd td.sorting_1 { background-color: #E3E6E7; }
 table.dataTable tr.odd td.sorting_2 { background-color: #DADCFF; }
 table.dataTable tr.odd td.sorting_3 { background-color: #E0E2FF; }
-table.dataTable tr.even td.sorting_1 { background-color: #EAEBFF; }
+table.dataTable tr.even td.sorting_1 { background-color:  white; }
 table.dataTable tr.even td.sorting_2 { background-color: #F2F3FF; }
 table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 
@@ -91,6 +92,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 .dataTables_paginate {
 	float: right;
 	text-align: right;
+    background-color: #1C7383;
 }
 
 /* Two button pagination - previous / next */
@@ -233,5 +235,8 @@ tfoot input {
 
 tfoot input.search_init {
 	color: #999;
+}
+Label {
+    color:#A6ABAB;
 }
 

@@ -29,6 +29,60 @@ namespace Ejemplo.Models.Repositorios
                 return db.Ca_AccionesProcesales.Where(x => x.Id_Accion != 0);
             }
         }
+        /*AQUI INICIA LA PARTE DE DELITOS */
+
+        /* lista para obtener clasificacion*/
+        public IQueryable<Ca_Delitos> ListaClasificacion() 
+        {
+            return db.Ca_Delitos.Where(x => x.Id_Delito == 0 && x.Id_Grupo == 0);
+        }
+        /*lista para obtener grupos*/
+        public IQueryable<Ca_Delitos> ListaGrupos(int? cla)
+        {
+            if (cla.HasValue)
+            {
+                return db.Ca_Delitos.Where(x => x.Id_Clasificacion == cla && x.Id_Grupo != 0 && x.Id_Delito==0);
+            }
+            return db.Ca_Delitos.Where(x => x.Id_Delito == 0 && x.Id_Grupo!=0);
+        
+        }
+        /*lista para obtener delitos*/
+        public IQueryable<Ca_Delitos> ListaDelitos(int? cla, int? grupo)
+        {
+            if (cla.HasValue && grupo.HasValue)
+            {
+                return db.Ca_Delitos.Where(x => x.Id_Clasificacion == cla.Value && x.Id_Grupo == grupo.Value && x.Id_Delito != 0);
+            }
+            else if (cla.HasValue && !grupo.HasValue)
+            {
+                return db.Ca_Delitos.Where(x => x.Id_Clasificacion == cla.Value && x.Id_Delito != 0);
+            }
+            else
+            {
+                return db.Ca_Delitos.Where(x => x.Id_Delito != 0);
+            }
+
+        
+        }
+
+        /*Agregar un delito*/
+        public void AgregarDelito(Ca_Delitos delito)
+        {
+            db.Ca_Delitos.Add(delito);
+        }
+        /*eliminar un delito*/
+        public void EliminarDelito(Ca_Delitos delito)
+        {
+            db.Ca_Delitos.Remove(delito);
+        }
+        /*obtener delito*/
+        public Ca_Delitos ObtenerDelito(string id_delito)
+        {
+            return db.Ca_Delitos.SingleOrDefault(x => x.Id_Delito2 == id_delito);
+        }
+
+
+        /*TERMINA LA PARTE DE DELITOS*/
 
         public IQueryable<Ca_AccionesProcesales> ListaEtapas()
         {
@@ -70,6 +124,47 @@ namespace Ejemplo.Models.Repositorios
             try
             {
                 max = (from reg in db.Ca_AccionesProcesales where reg.Id_Etapa_Procesal == Etapa && reg.Id_SubEtapa_Procesal == SubEtapa select reg.Id_Accion).Max();
+            }
+            catch
+            {
+                max = 0;
+            }
+            max++;
+            return (byte)max;
+        }
+
+        public byte NextClasi() {
+            Int16 max = 0;
+            try
+            {
+                max = (from reg in db.Ca_Delitos select reg.Id_Clasificacion).Max();
+            }
+            catch {
+                max = 0;
+            }
+            max++;
+            return (byte)max;
+        }
+        public byte NextGrupo(Int16 id_cla)
+        {
+            Int16 max = 0;
+            try
+            {
+                max = (from reg in db.Ca_Delitos where reg.Id_Clasificacion==id_cla select reg.Id_Grupo).Max();
+            }
+            catch
+            {
+                max = 0;
+            }
+            max++;
+            return (byte)max;
+        }
+        public byte NextDelito(Int16 id_cla, Int16 id_grupo)
+        {
+            Int16 max = 0;
+            try
+            {
+                max = (from reg in db.Ca_Delitos where reg.Id_Clasificacion==id_cla && reg.Id_Grupo==id_grupo select reg.Id_Delito).Max();
             }
             catch
             {

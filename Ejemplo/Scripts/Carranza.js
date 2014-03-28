@@ -15,7 +15,6 @@ var ajaxJson = function (URL, DATA, dr, seleccion, callback) {
         }
     });
 }
-
 var callBackLlenarSelect = function(result, dr, seleccion) {
     $("#" + dr).empty();
     if (result.length != 0) {
