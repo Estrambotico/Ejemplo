@@ -10,10 +10,10 @@
 		<title>Acciones procesales</title>
 		<!------------- HOJAS DE ESTILO CSS  ------------------>
         <script src="~/Scripts/jquery-2.1.0.min.js"></script>
-        <link href="~/Content/css/estilo.css" rel="stylesheet" />
-        <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
-        <link href="~/Content/estilo_plantilla_azul.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-ui-1.8.20.js"></script>
+        <link href="../../Content/css/bootstrap.min.css" rel="stylesheet" />
         <link href="../../Content/css/bootstrap.css" rel="stylesheet" />
+        <link href="../../Content/css/estilo.css" rel="stylesheet" />
         <link href="../../Content/css/font-awesome.css" rel="stylesheet" />
         <link href="../../Content/css/font-awesome.min.css" rel="stylesheet" />
         <script src="../../Scripts/Carranza.js"></script>
@@ -22,53 +22,67 @@
 		<!------------- JQUERY  ------------------>
 		
         
-	</head><body>
-	<div class="container">
-    	<div id="header" class="texto_centrado"><label>SISTEMA DE CAT&Aacute;LOGO PERR&Iacute;SIMOS</label></div>
-    	<div class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Cat&aacute;logos</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">            
-            	<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Delitos<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Delitos 1</a></li>
-                  <li><a href="#">Delitos 2</a></li>
-                  <li><a href="#">Delitos 3</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Personas<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Listar</a></li>
-                  <li><a href="#">Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Consulta de CURP</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Iniciar sesi&oacute;n</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-    </div>
-    </div>
-    <div id="row" class="contenedor">
- @RenderSection("featured", required: false)
+	</head>
+	<nav class="navbar navbar-inverse " role="navigation">
+			<div class="container">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">Tr&aacute;mites y servicios</a>
+						</li>
+						<li>
+							<a href="#">Transparencia</a>
+						</li>
+						<li>
+							<a href="#">Negocios</a>
+						</li>
+						<li>
+							<a href="#">Gobierno</a>
+						</li>
+						<li>
+							<a href="#">Educaci&oacute;n</a>
+						</li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">M&aacute;s<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Turismo</a>
+								</li>
+								<li>
+									<a href="#">Cultura</a>
+								</li>
+								<li>
+									<a href="#">Seguridad</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+<body>
+    <div class="jumbotron container">
+        <div class="row">
+				<div class="col-lg-7 col-md-6">
+					<h2 class="titulo_encabezado_1">Solicitud de</h2><h2 class="titulo_encabezado_2">Acciones Procesales</h2>
+				</div>
+				<div class="col-lg-5 col-md-6 fondo_banner">
+					<figure class="logo">
+						<img src="../../Content/img/volcanes-color.png" />
+					</figure>
+				</div>
+			</div>
+            @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
-    </div>
       <div id="footer" class="container">
 			<div class="container_footer">  
 				<div class="row container_footer">

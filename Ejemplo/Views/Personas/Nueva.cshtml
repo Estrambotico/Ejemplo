@@ -1,0 +1,187 @@
+﻿@model IEnumerable<Ejemplo.Models.vCa_Personas>
+
+@{
+    ViewBag.Title = "Nueva";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.20.js"></script>
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <link href="~/Content/jquery.ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.colorbox.js"></script>
+    <script src="~/Scripts/dataTables.js"></script>
+    <style>
+        .div_oculta {
+            display:none;
+        }
+        .div_mostrada::after {
+            display:block;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#domicilio").addClass("div_oculta");
+            $("#Nacionalidad").on("change", function () {
+                if ($($(this)).val() == 1) {
+                    $("#domicilio").removeClass("div_oculta").addClass("div_mostrada");
+                    ajaxJson("/Personas/GetEntidades", {}, "entidad_Federativa_c", 0, callBackLlenarSelect);
+                }
+                else
+                    $("#domicilio").removeClass("div_mostrada").addClass("div_oculta");
+            });
+            
+            $("#entidad_Federativa_c").on("change", function () {
+                ajaxJson("/Personas/GetMunicipios", { idEntidad: $(this).val() }, "municipio_c", 0, callBackLlenarSelect);
+                $("#entidad_Federativa").val($(this).find('option:selected').text());
+            });
+            $("#municipio_c").on("change", function () {
+                ajaxJson("/Personas/GetLocalidades/", { cveMunicipio: $(this).val() }, "localidad_c", 0, callBackLlenarSelect);
+                $("#municipio").val($(this).find('option:selected').text());
+            });
+            $("#localidad_c").on("change", function () {
+                ajaxJson("/Personas/GetColonias/", { cveLocalidad: $(this).val() }, "colonia_c", 0, callBackLlenarSelect);
+                $("#localidad").val($(this).find('option:selected').text());
+            });
+            $("#consulta_curp").on("click", function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Personas/GetDatosCURP",
+                    data: "Curp="+$("#persona_curp").val(),
+                    success: function (result) {
+                        if (result.Nombre!=null) {
+                            $("#persona_nombre").val(result.Nombre);
+                            $("#persona_primer_Apellido").val(result.Apellido_Paterno);
+                            $("#persona_segundo_Apellido").val(result.Apellido_Materno);
+                            $("#persona_Nacionalidad").val(result.Nacionalidad);
+                        } else {
+                            alert("No se encontraron datos D:");
+                        }
+                    }
+                });
+            });
+            $("#frm_nva_persona").submit(function (e) {
+                e.preventDefault();
+            });
+            $(".ajax").colorbox({ iframe: false, width: "700px  ", height: "600px", href: "/Personas/dialogo_persona" });
+            $(".datos").colorbox();
+            $("#guardar").on("click", function () {
+                $("#colonia").val($("#colonia").find('option:selected').text());
+                $.ajax({
+                    type: "POST",
+                    url: "/Personas/Nueva",
+                    data: $("#frm_nva_persona").serialize(),
+                    success: function (result) {
+                        if (result.Exito) {
+                            alert("Persona registrada con éxito");
+                        } else {
+                            alert("Error");
+                        }
+                    },
+                    error: function (result) {
+                        alert(result);
+                    },
+                });
+            });
+           /* $("#example tbody td").on("click", function () {
+                console.log(this);
+                var aPos = table.fnGetPosition(this);
+                console.log("Posición: " + aPos[0]);
+                table.fnDeleteRow(aPos[0]);
+            });*/
+            $('.eliminarPersona').on('click', function (e) {
+                e.preventDefault();
+                var eliminar = this;
+                console.log($(this).parent().get(0));
+                var url = $(this).attr('href');
+                var aPos = table.fnGetPosition($(this).parent().get(0));
+                console.log(aPos);
+                
+                if (confirm("¿Estás seguro de borrar a la persona D:?")) {
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        success: function (data) {
+                            if (data.Exito == true) {
+                                table.fnDeleteRow(aPos[0]);
+                                alert("Persona borrada con éxito");
+                                var t = $("#example").dataTable();
+                            } else
+                                alert("Error al borrar");
+                        }, error: function (data) {
+                            alert("No se puede borrar a la persona");
+                        }
+                    });
+                } else
+                    return false;
+            });
+            var asInitVals = new Array();
+            var table =
+                $("#example").dataTable({
+                "sPaginationType": "full_numbers",
+                "iDisplayLength": 10,
+                "aLengthMenu": [[5, 10, 15, 20, 25, 50, 100, -1], [5, 10, 15, 20, 25, 50, 100, "Todos"]]
+            });
+            $("tfoot input").keyup(function () {
+                table.fnFilter(this.value, $("tfoot input").index(this));
+            });
+            $("tfoot input").each(function (i) {
+                asInitVals[i] = this.value;
+            });
+            $("tfoot input").focus(function () {
+                if ($("tfoot input").hasClass("search_init")) {
+                    this.className = "";
+                    this.value = "";
+                }
+            });
+            $("tfoot input").blur(function (i) {
+                if (this.value == "") {
+                    this.className = "search_init";
+                    this.value = asInitVals[$("tfoot input").index(this)];
+                }
+            });
+        });
+    </script>
+}
+
+<a href="#" id="nva_persona" class="ajax fa fa-plus nva_persona">Nueva persona</a>
+<table id="example" class="display" width="100%">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>CURP</th>
+						<th>Domicilio</th>
+						<th>Estado</th>
+						<th>Municipio</th>
+						<th>Localidad</th>
+                        <th>Acci&oacute;n</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					
+				</tfoot>
+
+				<tbody>
+					@foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NombreCompleto</td>
+                            <td>@item.curp</td>
+                            <td>@item.calle</td>
+                            <td>@item.entidad_Federativa</td>
+                            <td>@item.municipio</td>
+                            <td>@item.localidad</td>
+                            <td>
+                                @Html.ActionLink(" ", "VerDatos", new {  id_persona=item.Id_Persona},new { @class = "cboxElement datos fa fa-edit"})
+                                @Html.ActionLink(" ", "Eliminar", new {  id_persona=item.Id_Persona},new { @class = "eliminarPersona fa fa-trash-o"})
+                            </td>
+                        </tr>
+                    }
+				
+				</tbody>
+			</table>
+
+      

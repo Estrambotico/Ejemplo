@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "MuestraDia";
+}
+@Html.ActionLink("Volver", "Calendario")
+<div id="calendario_dia"></div>
+@Html.Hidden("fecha",@ViewData["dia"]);
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="~/Scripts/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="~/Scripts/jquery.colorbox.js"></script>
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var fecha = $("#fecha").val().split("-");
+            var anio = fecha[0];
+            var mes = parseInt(fecha[1]);
+            var dia = parseInt(fecha[2]);
+            console.log("Año: "+anio+", mes: "+mes+", dia: "+dia);
+            $('#calendario_dia').fullCalendar({
+                year:anio,
+                month: mes-1,
+                date: dia,
+                allDayText:'',
+                eventSources: [
+                {
+                    events: [
+                     {
+                         title: 'Cita #1',
+                         start: fecha,
+                     },
+                     {
+                         title: 'Cita #2',
+                         start: fecha + ' 09:00:00',
+                         allDay: false
+                     },
+                     {
+                         title: 'Cita #3',
+                         start: fecha+' 12:30:00',
+                         url: '/Acciones/Grafica',
+                         className: 'url_ajax',
+                         allDay: false 
+                     }
+                    ],
+                    color: 'black',    
+                    textColor: 'yellow', 
+                    editable: 'true',
+                    backgroundColor:'green'
+                }],
+                dayClick: function (date, allDay, jsEvent, view) {
+                    if (allDay) {
+                        var fecha = $.fullCalendar.formatDate(date, "yyyy-MM-dd");
+                        $(this).colorbox({href:"/Acciones/MuestraDia/"+fecha});
+                    } else {
+                        var f= $.fullCalendar.formatDate(date, "HH:mm");
+                        alert('Se hizo click en el espacio: ' + f);
+                    }
+                },
+                eventMouseOver: function (event, jsEvent, view) {
+                    alert('Evento: '+event.title)
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    alert("Título del evento: " + calEvent.title);
+                    var fecha = $.fullCalendar.formatDate(calEvent.start, "dd/MM/yyyy");
+                    alert("Fecha del evento: " + fecha);
+                },
+                agenda: 'H:mm{ - H:mm}', 
+                '': 'h(:mm)t',
+                monthNames: [
+                   'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+                   'Septiembre', 'Octubre', 'Noviebre', 'Diciembre'
+                ],
+                dayNames: [
+                    'Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sabado'
+                ]
+            });
+            $('#calendario_dia').fullCalendar('changeView', "agendaDay");
+            console.log($("#fecha").val());
+        });
+    </script>
+}
+

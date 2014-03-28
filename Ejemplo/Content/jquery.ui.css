@@ -1,0 +1,21 @@
+﻿ .ui-dialog .ui-dialog-content
+        {
+            position: relative;
+            border: 0;
+            padding: .5em 1em;
+            background: none;
+            overflow: auto;
+            zoom: 1;
+            background-color: #ffd;
+            border: solid 1px #ea7;
+        }
+
+        .ui-dialog .ui-dialog-titlebar
+        {
+            display:none;
+        }
+
+        .ui-widget-content
+        {
+            border:none;
+        }

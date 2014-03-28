@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "ListaAcciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Calendario</h2>
+<div id="calendario"></div>
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="~/Scripts/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="~/Scripts/jquery.colorbox.js"></script>
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendario').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title'
+                },
+                buttonText: {
+                    prev: '&nbsp;&#9668;&nbsp;',
+                    next: '&nbsp;&#9658;&nbsp;',
+                    prevYear: '&nbsp;&lt;&lt;&nbsp;',
+                    nextYear: '&nbsp;&gt;&gt;&nbsp;',
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana'
+                },                today:'Hoy',                droppable: true,
+                drop: function(date, allDay) {
+                    alert("Dropped on " + date + " with allDay=" + allDay);
+                },
+                viewDisplay: function (view) {
+                    dateArr = [];
+                    var today = view.start;
+                    var viewData = $("#calendario").fullCalendar("getView");
+                    cMonth = today.getMonth();
+                    cYear = today.getFullYear();
+                    $("td.fc-day").each(function () {
+                        if ($(this).hasClass('fc-today')) {
+                            $(this).css({ 'background': 'none', 'background-color': '#7FD4FF' });
+                        } else {
+                            $(this).css({ 'background': 'none', 'background-color': '#A0CC41' });
+                        }
+                    });
+                },
+                columnFormat: {
+                    month: 'dddd'
+                },
+                eventSources: [
+                {
+                    events: [
+                     {
+                         title: '',
+                         start: '2014-03-25',
+                         description: 'kjfsdkjgfsd'
+                         
+                     },
+                     {
+                         title: '',
+                         start: '2014-02-24',
+                         description: 'kjfsdkjgfsd'
+
+                     },
+                     {
+                         title: '',
+                         start: '2014-03-25'
+                     },
+                     {
+                         title : ''
+                     },
+                     {
+                         title: '',
+                         start: '2014-03-27',
+                         url: '/Acciones/Grafica',
+                         className: 'url_ajax'
+                     }
+                     ,
+                     {
+                         title: '',
+                         start: '2014-03-04',
+                         url: '/Acciones/Grafica',
+                         className: 'url_ajax'
+                     }
+                    ],
+                    color: '#FAA732',
+                    textColor: 'yellow'
+                    //editable: 'true'
+                    //backgroundColor:'green'
+                }],
+                dayClick: function (date, allDay, jsEvent, view) {
+                    if (allDay) {
+                        var fecha = $.fullCalendar.formatDate(date, "yyyy-MM-dd");
+                        //alert('Se hizo click en el día: ' + fecha);
+                        //$(this).colorbox({href:"/Acciones/MuestraDia/"+fecha});
+                        window.open("/Acciones/MuestraDia/?fecha=" + fecha, '_self');
+                    } else {
+                        alert('Se hizo click en el espacio: ' + date);
+                    }
+                },
+                eventMouseOver: function (event, jsEvent, view) {
+                    alert('Evento: '+event.title)
+                },
+                eventRender: function (event, element, monthView) {
+                    console.log(event.title);
+                    if (event.title == 'Cita #3') {
+                        var one_day = 1000 * 60 * 60 * 24;
+                        var _Diff = Math.ceil((event.start.getTime() - monthView.visStart.getTime() / (one_day)));
+                        var dayClass = ".fc-day" + _Diff;
+                        $(".fc-day").css('backgroundColor', 'green');
+                    }else
+                        $(".fc-day").css('backgroundColor', 'red');
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    alert("Título del evento: " + calEvent.title);
+                    var fecha = $.fullCalendar.formatDate(calEvent.start, "dd/MM/yyyy");
+                    alert("Fecha del evento: " + fecha);
+                },
+                monthNames: [
+                    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+                    'Septiembre', 'Octubre', 'Noviebre', 'Diciembre'
+                ],
+                eventRender: function (event, element, view) {
+                    var dateString = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd');
+                    //view.element.find('.fc-day[data-date="' + dateString + '"]').css('background-color', '#FAA732');
+                    view.element.find('.fc-day[data-date="' + dateString + '"]').css('background-color', '#FAA732');
+                },
+                dayNames: [
+                    'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado'
+                ]
+            });
+            $(".url_ajax").colorbox();
+            $(".fc_day").colorbox();
+        });
+    </script>
+}

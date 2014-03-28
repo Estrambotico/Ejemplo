@@ -1,0 +1,327 @@
+﻿@model Ejemplo.Models.Personas
+@{
+    ViewBag.Title = "dialogo_persona";
+    Layout = null;
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <style>
+        .div_oculta {
+            display:none;
+        }
+        .div_mostrada::after {
+            display:block;
+        }
+    </style>
+   
+}
+<link href="~/Content/estilo_plantilla_azul.css" rel="stylesheet" />
+ <script type="text/javascript">
+     $(document).ready(function () {
+         ajaxJson("/Personas/GetEntidades", {}, "estado", 0, callBackLlenarSelect);
+            $("#click_curp").on("click", function () {
+                $("#popup_nueva_persona").addClass("div_oculta");
+                $("#buscar_curp").removeClass("div_oculta").addClass("div_mostrada");
+            });
+            $("#domicilio").addClass("div_oculta");
+            $("#persona_Nacionalidad").on("change", function () {
+                if ($($(this)).val() == "true") {
+                    console.log($(this).val());
+                    $("#domicilio").removeClass("div_oculta").addClass("div_mostrada");
+                    ajaxJson("/Personas/GetEntidades", {}, "entidad_Federativa_c", 0, callBackLlenarSelect);
+                }
+                else
+                    $("#domicilio").removeClass("div_mostrada").addClass("div_oculta");
+            });
+            $("#entidad_Federativa_c").on("change", function () {
+                ajaxJson("/Personas/GetMunicipios", { idEntidad: $(this).val() }, "municipio_c", 0, callBackLlenarSelect);
+                $("#entidad_Federativa").val($(this).find('option:selected').text());
+            });
+            $("#municipio_c").on("change", function () {
+                ajaxJson("/Personas/GetLocalidades/", { cveMunicipio: $(this).val() }, "localidad_c", 0, callBackLlenarSelect);
+                $("#municipio").val($(this).find('option:selected').text());
+            });
+            $("#localidad_c").on("change", function () {
+                ajaxJson("/Personas/GetColonias/", { cveLocalidad: $(this).val() }, "colonia_c", 0, callBackLlenarSelect);
+                $("#localidad").val($(this).find('option:selected').text());
+            });
+            $("#consulta_curp").on("click", function () {
+                console.log("D:");
+                $.ajax({
+                    type: "GET",
+                    url: "/Personas/GetDatosCURP",
+                    data: "Curp="+$("#persona_curp").val(),
+                    success: function (result) {
+                        if (result.Nombre!=null) {
+                            $("#persona_nombre").val(result.Nombre);
+                            $("#persona_primer_Apellido").val(result.Apellido_Paterno);
+                            $("#persona_segundo_Apellido").val(result.Apellido_Materno);
+                        } else {
+                            alert("No se encontraron datos D:");
+                        }
+                    }
+                });
+            });
+            $("#frm_nva_persona").submit(function (e) {
+                e.preventDefault();
+            });
+            $("#guardar").on("click", function () {
+                $("#colonia").val($("#colonia").find('option:selected').text());
+                $.ajax({
+                    type: "POST",
+                    url: "/Personas/Nueva",
+                    data: $("#frm_nva_persona").serialize(),
+                    success: function (result) {
+                        if (result.Exito) {
+                            alert("Persona registrada con éxito");
+                            window.open("/Personas/Nueva", "_self");
+                        } else {
+                            alert("Error");
+                        }
+                    },
+                    error: function (result) {
+                        alert(result);
+                    },
+                });
+            });
+            $("#buscar").on("click", function () {
+                var nombre = $("#nom").val();
+                var apellido_p = $("#apellido_p").val();
+                var apeliido_m = $("#apellido_m").val();
+                var estado = $("#estado").find("option:selected").text();
+                var fechaNac = $("#fechaNac").val();
+                var sexo = $("#sexo").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Personas/getCurpByNombre",
+                    data: { nombre: nombre, apellido_p: apellido_p, apellido_m: apeliido_m, estado: estado, fechaNac: fechaNac, sexo: sexo },
+                    before: function () {
+                        $("#buscando").removeClass("div_oculta").addClass("div_mostrada");
+                    },
+                    after: function () {
+                        $("#buscando").removeClass("div_mostrada").addClass("div_oculta");
+                    },
+                    success: function (result) {
+                        if (result.NOMBRE != null) {
+                            $("#persona_curp").val(result.CURP);
+                            $("#persona_nombre").val(result.NOMBRE);
+                            $("#persona_primer_Apellido").val(result.APELLIDO_P);
+                            $("#persona_segundo_Apellido").val(result.APELLIDO_M);
+                            $("#popup_nueva_persona").removeClass("div_oculta").addClass("div_mostrada");
+                            $("#buscar_curp").removeClass("div_mostrada").addClass("div_oculta");
+                        } else {
+                            alert("No se encontró la CURP");
+                        }
+                    },
+                    error: function (result) {
+                        alert(result);
+                    },
+                });
+            });
+        });
+    </script>
+<div class="div_oculta row form-horizontal" id="buscar_curp">
+    <div id="inline_content">
+        <div align="center" class="titulo">BUSCAR CURP</div>
+        <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Nombre:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+                <input type="text" name="nom" id="nom" placeholder="CURP" />
+		    </div>
+	    </div>
+	    <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Apellido Paterno:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+			    <input type="text" name="apellido_p" id="apellido_p" placeholder="APELLIDO PATERNO"/>
+		    </div>
+	    </div>
+        <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Apellido Materno:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+			    <input type="text" name="apellido_m" id="apellido_m" placeholder="APELLIDO MATERNO"/>
+		    </div>
+	    </div>
+        <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Fecha de nacimiento:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+			    <input type="date" name="fechaNac" id="fechaNac" />
+		    </div>
+	    </div>
+        <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Sexo:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+			    <select name="sexo" id="sexo">
+                    <option value="0">Seleccione...</option>
+                    <option value="Hombre">Hombre...</option>
+                    <option value="Mujer">Mujer...</option>
+				</select>
+		    </div>
+	    </div>
+        <div class="form-group">
+		    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Estado:</label>
+		    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+			    <select name="estado" id="estado">
+                    <option value="0">Seleccione...</option>
+				</select>
+		    </div>
+	    </div>
+        
+        <div class="form-group">
+			<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">&nbsp;</label>
+			<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+				<input type="submit" id="buscar" name="buscar" class="btn btn-primary btn-margin" value="Buscar"/>
+			</div>
+		</div>
+        <div align="center" id="buscando" class="div_oculta">Buscando...</div>
+    </div>
+</div>
+@using (Html.BeginForm("Nueva", "Personas", FormMethod.Post, new { @class="form-horizontal",@id="frm_nva_persona"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row" id="popup_nueva_persona">
+        <div align="center" class="titulo">AGREGAR PERSONA</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 control-label text-right">CURP:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+                    @Html.EditorFor(model => model.persona.curp)
+                    <button type="button" id="consulta_curp">Buscar CURP</button>
+                    <br /><a id="click_curp" href="#">¿Olvidaste tu CURP?</a>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Nombre:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+                    @Html.EditorFor(model => model.persona.nombre)        
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Apellido Paterno:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.primer_Apellido)        
+				</div>
+			</div>
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Apellido Materno:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.segundo_Apellido)        
+				</div>
+			</div>
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Nacionalidad:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					<select name="persona.Nacionalidad" id="persona_Nacionalidad" class="selectpicker">
+                        <option value="-1">Seleccione...</option>
+                        <option value="true">Mexicana</option>
+                        <option value="false">Extranjero</option>
+					</select>
+				</div>
+			</div>
+            <div id="domicilio">
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Entidad Federativa:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <select name="entidad_Federativa_c" id="entidad_Federativa_c">
+                            <option value="0">Seleccione...</option>
+					    </select>
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Municipio:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <select name="municipio_c" id="municipio_c">
+                            <option value="0">Seleccione...</option>
+					    </select>
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Localidad:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <select name="localidad_c" id="localidad_c">
+                            <option value="0">Seleccione...</option>
+					    </select>
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Colonia:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <select name="colonia_c" id="colonia_c">
+                            <option value="0">Seleccione...</option>
+					    </select>
+				    </div>
+			    </div>  
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Calle:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <input type="text" id="calle" name="calle" />
+				    </div>
+			    </div>  
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Número:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+				        <input type="number" id="numero" name="numero" />        
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">C.P:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+				        <input type="number" id="codigo_Postal" name="codigo_Postal" />        
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Tipo de Vialidad:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					    <select name="id_Tipo_Carreterea" id="id_Tipo_Carretera">
+                            <option value="0">Seleccione...</option>
+                            <option value="1">Urbana...</option>
+                            <option value="2">Rural...</option>
+					    </select>
+				    </div>
+			    </div>
+                <div class="form-group">
+				    <label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Descripción vialidad:</label>
+				    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+				        <input type="number" id="Descripcion_Vialidad" name="Descripcion_Vialidad" />        
+				    </div>
+			    </div>
+            </div>
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Cédula profesional:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.Cedula_Profesional)        
+				</div>
+			</div>
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Teléfono:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.Telefono)        
+				</div>
+			</div>
+            
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Descripción nacionalidad:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.Descripcion_Nacionalidad)        
+				</div>
+			</div>
+            <div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">Alias:</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					@Html.EditorFor(model => model.persona.alias)        
+				</div>
+			</div>
+        <input type="hidden" name="entidad_Federativa" id="entidad_Federativa" value="" />
+        <input type="hidden" name="municipio" id="municipio" value="" />
+        <input type="hidden" name="localidad" id="localidad" value="" />
+        <input type="hidden" name="colonia" id="colonia" value="" />
+			<div class="form-group">
+				<label class="col-lg-4 col-md-3 col-sm-4 col-xs-6 text-right control-label">&nbsp;</label>
+				<div class="col-lg-8 col-md-9 col-sm-8 col-xs-6">
+					<input type="submit" id="guardar" name="guardar" class="btn btn-primary btn-margin" value="Guardar"/>
+				</div>
+			</div>
+	
+    </div>     
+}
+<div>
+</div>
