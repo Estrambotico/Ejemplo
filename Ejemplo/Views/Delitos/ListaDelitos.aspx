@@ -6,15 +6,16 @@
 <head id="Head1" runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>Lista Delitos</title>
+   
 </head>
 <body>
-   
+     <label>Nueva   </label>  <a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square fa-2x">
+                       </a>
    <table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
     <thead>
         <tr>
         <th>
-               Nueva<a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square fa-2x">
-                       </a>
+             
         </th>
             <th>
                  
@@ -29,7 +30,7 @@
                 Descripcion
             </th>
             <th>
-                Fecha de actualizacion
+               Gravedad
             </th>
             <th width="10%"></th>
         </tr>
@@ -44,9 +45,9 @@
             <td>
                 <%: Html.DisplayFor(modelItem => item.Descripcion) %>
             </td>
-          
+         
             <td>
-                <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
+                <%:((item.Gravedad)==1) ? "Si" : "No" %>
             </td>
            <td width="10%">
              <%: Html.ActionLink(" ", "EditarDelito", new {id_grupo=item.Id_Delito2}, new { @class="ajax fa fa-pencil-square-o" }) %> |

@@ -5,12 +5,16 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
+     <link href="../../Content/colorbox/colorbox.css" rel="stylesheet" />
+    <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
     <title>EditarGrupo</title>
 </head>
 <body>
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
+    <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
+    <script src="../../Scripts/jquery.colorbox-min.js"></script>
     <% using (Html.BeginForm(Html.BeginForm("EditarGrupo", "Delitos", FormMethod.Post, new { id = "frm_editar_grupo" }))) { %>
         <%: Html.ValidationSummary(true) %>
     
@@ -70,7 +74,23 @@
                         }
                         else {
                             alert('Registro modificado correctamente');
-                            window.open('Delitos/Index');
+
+                            window.open("/Delitos/Index", "_self");
+                            /*var cla = $("#Id_Clasificacion1").val();
+
+                            var url = "/Delitos/ListaGrupos/?" + "cla=" + cla;
+                           
+                           
+                            $.ajax({
+                                url: url,
+                                dataType: 'html',
+                                timeout: 5000, // 5 seconds
+                                success: function (html) {
+                                    $("#div_tabla").html(html);
+                                }
+                            });*/
+                           
+                            
                         }
 
                     }

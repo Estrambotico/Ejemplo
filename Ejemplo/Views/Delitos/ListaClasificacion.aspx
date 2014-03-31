@@ -6,13 +6,13 @@
     
 <h2>ListaClasificacion</h2>
 
-
+         <label>Nueva   </label>  <a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square fa-2x">
+                       </a>
 <table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
     <thead>
         <tr>
         <th colspan="3">
-               Nueva<a href="/Delitos/NuevaClasificacion" class="ajax fa fa-plus-square fa-2x">
-                       </a>
+              
         </th>
        
     </tr>

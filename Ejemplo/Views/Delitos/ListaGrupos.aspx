@@ -9,12 +9,13 @@
     <title>ListaGrupos</title>
 </head>
 <body>
+     <label>Nueva   </label>  <a href="/Delitos/NuevoGrupo" class="ajax fa fa-plus-square fa-2x">
+                       </a>
    <table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
     <thead>
         <tr>
         <th>
-               Nueva<a href="/Delitos/NuevoGrupo" class="ajax fa fa-plus-square fa-2x">
-                       </a>
+              
         </th>
             <th>
                  

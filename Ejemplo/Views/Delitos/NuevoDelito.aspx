@@ -8,12 +8,14 @@
 
     <meta name="viewport" content="width=device-width" />
     <title>Nuevo Delito</title>
+     
    
 </head>
 <body>
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
+     
     <% using (Html.BeginForm("NuevoDelito", "Delitos", FormMethod.Post, new { id = "frm_nuevo_delito" }))
        { %>
         <%: Html.ValidationSummary(true) %>
@@ -54,6 +56,19 @@
                     </th>
                 </tr>
                 <tr>
+                    <th>
+                        <label>Gravedad</label>
+                    </th>
+                    <th>
+                        <select id="Gravedad" name="Gravedad">
+                            <option value="0">--Seleccione---</option>
+                            <option value="1">Si</option>
+                             <option value="2">No</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    
                     <th colspan="2">
                          <input id="btn_guardar" type="submit" class="btn btn-primary" value="GUARDAR" />
                     </th>
@@ -98,6 +113,12 @@
                           else {
                               alert('Registro agregado correctamente');
                               window.open("/Delitos/IndexDelitos", "_self");
+                              /*var cla = $("#Id_Clasificacion1").val();
+                              var grupo = $("#id_Grupo1").val();
+
+                              var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
+
+                              $('#div_tabla').load(url);*/
                           }
 
                       }

@@ -210,7 +210,7 @@ namespace Ejemplo.Controllers
             {
                 
                 delito.Id_Delito = repo.NextDelito(delito.Id_Clasificacion,delito.Id_Grupo);
-                
+               
                 delito.Fecha_Act = DateTime.Now;
                 delito.Usu_Act = 1;
                 repo.AgregarDelito(delito);

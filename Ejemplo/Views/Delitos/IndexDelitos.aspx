@@ -41,7 +41,7 @@
     <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
      <%: Html.DropDownList("Id_Clasificacion1", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---")%>
 
-    <label>Grupos</label>
+    <label>GRUPOS:</label>
     <select id="id_Grupo1" name="id_Grupo1">
              <option value="0">---Seleccione---</option>
       </select>

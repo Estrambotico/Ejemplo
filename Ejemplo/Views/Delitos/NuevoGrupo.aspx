@@ -5,12 +5,14 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
+    
     <title>NuevoGrupo</title>
 </head>
 <body>
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
+   
     
     <% using (Html.BeginForm("NuevoGrupo", "Delitos", FormMethod.Post, new { id = "frm_nuevo_grupo" }))
        { %>
@@ -74,8 +76,13 @@
                      data: $("#frm_nuevo_grupo").serialize(),
                      success: function (result) {
                          if (result.Exito == true) {
-                              alert('Registro agregado correctamente');
+                             alert('Registro agregado correctamente');
                              window.open("/Delitos/Index", "_self");
+                              /*var cla = $("#Id_Clasificacion1").val();
+
+                              var url = "/Delitos/ListaGrupos/?" + "cla=" + cla;
+
+                              $('#div_tabla').load(url);*/
                          }
                          else {
                             alert("'Error" + result.Mensaje + "'");

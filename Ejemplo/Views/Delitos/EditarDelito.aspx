@@ -5,13 +5,15 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
+      <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
+  <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
     <title>EditarDelito</title>
 </head>
 <body>
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
-    
+   
      <% using (Html.BeginForm(Html.BeginForm("EditarDelito", "Delitos", FormMethod.Post, new { id = "frm_editar_delito" }))) { %>
         <%: Html.ValidationSummary(true) %>
     
@@ -40,6 +42,7 @@
                         <%: Html.HiddenFor(model => model.Usu_Act) %>
                     </th>
                 </tr>
+                
                 <tr>
                     <th colspan="2">
                          <button id="btn_guardar" type="button" class="btn btn-primary" >Guardar</button>
@@ -71,10 +74,25 @@
                     success: function (result) {
                         if (result.Exito == false) {
                             alert("'Error" + result.Mensaje + "'");
+                            
                         }
                         else {
                             alert('Registro modificado correctamente');
-                            window.open("/Delitos/IndexDelitos", "_self");
+                           // window.open("/Delitos/IndexDelitos", "_self");
+                            var cla = $("#Id_Clasificacion1").val();
+                            var grupo = $("#id_Grupo1").val();
+                            var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
+                            //window.opener.location.reload();
+                            var oTable = $('.dataTable').dataTable();
+                            oTable.fnStandingRedraw();
+                           /* $.ajax({
+                                url: url,
+                                dataType: 'html',
+                                //timeout: 5000, // 5 seconds
+                                success: function (html) {
+                                    $("#div_tabla").html(html);
+                                }
+                            });*/
                         }
 
                     }
