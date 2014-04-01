@@ -5,14 +5,16 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
-      <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
-  <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
+     <link href="../../Content/colorbox/colorbox.css" rel="stylesheet" />
+    <link href="../../Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
     <title>EditarDelito</title>
 </head>
 <body>
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
+     <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
+    <script src="../../Scripts/jquery.colorbox-min.js"></script>
    
      <% using (Html.BeginForm(Html.BeginForm("EditarDelito", "Delitos", FormMethod.Post, new { id = "frm_editar_delito" }))) { %>
         <%: Html.ValidationSummary(true) %>
@@ -78,13 +80,14 @@
                         }
                         else {
                             alert('Registro modificado correctamente');
+                            filtrar();
                            // window.open("/Delitos/IndexDelitos", "_self");
-                            var cla = $("#Id_Clasificacion1").val();
+                            /*var cla = $("#Id_Clasificacion1").val();
                             var grupo = $("#id_Grupo1").val();
                             var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
                             //window.opener.location.reload();
-                            var oTable = $('.dataTable').dataTable();
-                            oTable.fnStandingRedraw();
+                            var oTable = $('#tabla').dataTable();
+                            oTable.fnStandingRedraw();*/
                            /* $.ajax({
                                 url: url,
                                 dataType: 'html',

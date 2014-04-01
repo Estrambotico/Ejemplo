@@ -15,9 +15,10 @@
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
     <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
     <script src="../../Scripts/jquery.colorbox-min.js"></script>
+    
     <% using (Html.BeginForm(Html.BeginForm("EditarGrupo", "Delitos", FormMethod.Post, new { id = "frm_editar_grupo" }))) { %>
         <%: Html.ValidationSummary(true) %>
-    
+        <%= Html.Hidden("pos",ViewData["pos"]) %>
         <fieldset>
             <legend>Editar clasificacion</legend>
     
@@ -60,13 +61,12 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-
             $("#btn_guardar").on("click", function () {
-
+                
                 $.ajax({
                     type: "POST",
                     datatype: "json",
-                    url: "/Delitos/EditarGrupo/",
+                    url: "/Delitos/EditarGrupo",
                     data: $("#frm_editar_grupo").serialize(),
                     success: function (result) {
                         if (result.Exito == false) {
@@ -75,7 +75,12 @@
                         else {
                             alert('Registro modificado correctamente');
 
-                            window.open("/Delitos/Index", "_self");
+                            filtrar();
+                            //var tablas = $('#tableOne').dataTable();
+                            //var t = $("#tabla").dataTable();
+
+                            //t.fnUpdate([$("#Descripcion").val(), '', ''], 22);
+                            //window.open("/Delitos/Index", "_self");
                             /*var cla = $("#Id_Clasificacion1").val();
 
                             var url = "/Delitos/ListaGrupos/?" + "cla=" + cla;

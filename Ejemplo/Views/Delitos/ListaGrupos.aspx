@@ -65,15 +65,23 @@
     <script type="text/javascript">
         var asInitVals = new Array();
         $(document).ready(function () {
+
             $("#Id_Clasificacion").on("change", function () {
 
 
 
 
             });
-            $(".ajax").colorbox({ width: 500, height: 400 });
+            //$(".ajax").colorbox();
+            $(".ajax").on("click", function (e) {
+                e.preventDefault();
+                var o = $(this).parent().parent().get(0);
+                var posicion = tabla.fnGetPosition(o);
+              // tabla.fnUpdate('Cambio',posicion,0);
+                console.log(posicion);
+                $.colorbox({ width: 500, height: 400,href:$(this).attr("href")+"&pos="+posicion});
+            });
             var tabla = $('#tableOne').dataTable({
-
                 "sPaginationType": "full_numbers",
 
 
@@ -106,7 +114,7 @@
                     "sProcessing": "Espere, por favor...",
 
                     "sSearch": "Buscar:",
-
+                    "bServerSide": true,
                 }
             });
             $("tfoot input").keyup(function () {
@@ -137,6 +145,7 @@
                     this.value = asInitVals[$("tfoot input").index(this)];
                 }
             });
+            console.log(tabla);
 
             $(".eliminar").on("click", function (e) {
 

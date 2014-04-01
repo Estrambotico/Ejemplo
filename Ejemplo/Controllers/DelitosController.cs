@@ -147,9 +147,10 @@ namespace Ejemplo.Controllers
         }
         /*MODIFICAR GRUPO*/
 
-        public ActionResult EditarGrupo(String id_grupo) {
+        public ActionResult EditarGrupo(String id_grupo, string pos) {
             var cla = repo.ListaClasificacion().ToList();
             ViewData["Cla"] = cla;
+            ViewData["posicion"] = pos;
             Ca_Delitos delitos = repo.ObtenerDelito(id_grupo);
 
             return View(delitos);
@@ -168,7 +169,7 @@ namespace Ejemplo.Controllers
                 UpdateModel<Ca_Delitos>(temp);
                 repo.GuardarCambios();
 
-                return Json(new { Exito = true });
+                return Json(new { Exito = true, Registro = temp });
             }
             catch (Exception ex)
             {
@@ -246,7 +247,7 @@ namespace Ejemplo.Controllers
                  UpdateModel<Ca_Delitos>(temp);
                  repo.GuardarCambios();
 
-                 return Json(new { Exito = true });
+                 return Json(new { Exito = true, Registro = temp });
              }
              catch (Exception ex)
              {

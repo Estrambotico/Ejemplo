@@ -9,7 +9,7 @@
 
          $("#Id_Clasificacion1").on("change", function () {
              ajaxJson("/Delitos/SelectGrupos/", { cla: $(this).val() }, "id_Grupo1", 0, callBackLlenarSelect);
-             var cla = $("#Id_Clasificacion").val();
+             var cla = $("#Id_Clasificacion1").val();
             
              var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla;
 
@@ -30,6 +30,29 @@
 
          });
      });
+     function filtrar() {
+         var cla = $("#Id_Clasificacion1").val();
+         var grupo = $("#id_Grupo1").val();
+
+         if (grupo == 0) {
+             var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla;
+
+         }
+         else {
+             var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
+         }
+
+         
+         console.log(cla);
+         $.ajax({
+             url: url,
+             dataType: 'html',
+             timeout: 5000, // 5 seconds
+             success: function (html) {
+                 $("#div_tabla").html(html);
+             }
+         });
+     }
 
             </script>
 
