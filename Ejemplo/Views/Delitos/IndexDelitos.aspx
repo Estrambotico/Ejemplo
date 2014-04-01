@@ -33,17 +33,21 @@
      function filtrar() {
          var cla = $("#Id_Clasificacion1").val();
          var grupo = $("#id_Grupo1").val();
-
-         if (grupo == 0) {
-             var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla;
-
+         if (cla < 1) {
+             var url = "/Delitos/ListaDelitos/";
          }
          else {
-             var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
+             if (grupo == 0) {
+                 var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla;
+
+             }
+             else {
+                 var url = "/Delitos/ListaDelitos/?" + "id_cla=" + cla + "&id_grupo=" + grupo;
+             }
+
+             
          }
 
-         
-         console.log(cla);
          $.ajax({
              url: url,
              dataType: 'html',

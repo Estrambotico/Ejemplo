@@ -33,9 +33,15 @@
          });
          function filtrar() {
              var cla = $("#Id_Clasificacion1").val();
+             if (cla < 1) {
 
-             var url = "/Delitos/ListaGrupos/?" + "cla=" + cla;
-             console.log(cla);
+                 var url = "/Delitos/ListaGrupos/";
+             }
+             else {
+                 var url = "/Delitos/ListaGrupos/?" + "cla=" + cla;
+             }
+             
+             
              $.ajax({
                  url: url,
                  dataType: 'html',
