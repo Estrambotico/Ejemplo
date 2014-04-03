@@ -20,41 +20,33 @@
     
         <fieldset>
             <legend>Nuevo grupo</legend>
-    <div class="row" style="text-align:center">
-
-            <table align="center">
-                <tr>
-                 <th>
-                      <label >Clasificacion</label>
-                 </th>
-             <th>
-                   <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
-                   <%: Html.DropDownList("Id_Clasificacion", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---")%>
-                   
-                  </th>
-            </tr>
+            <table class="tabla">
                 <tr>
                     <th>
+                      <label >Clasificacion</label>
+                    </th>
+                    <th>
+                        <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
+                        <%: Html.DropDownList("Id_Clasificacion", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---")%>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="tdtop">
                         <label>Descripcion</label>
                     </th>
                     <th>
                         <%: Html.TextAreaFor(model => model.Descripcion) %>
-                         <%: Html.ValidationMessageFor(model => model.Descripcion) %>
+                        <%: Html.ValidationMessageFor(model => model.Descripcion) %>
                     </th>
                 </tr>
                 <tr>
                     <th colspan="2" align="center">
+                        <br />
                          <input id="btn_guardar" type="submit" class="btn btn-primary" value="Guardar" >
                     </th>
                 </tr>
-                <tr>
-                    <th colspan="2" align="center">
-                         <%: Html.ActionLink("Regresar a la lista", "ListaGrupos") %>
-                    </th>
-                </tr>
-            </table>
-    </div>   
-              
+                
+            </table> 
            
         </fieldset>
     <% } %>

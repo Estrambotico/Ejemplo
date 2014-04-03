@@ -5,18 +5,19 @@
 table.dataTable {
 	margin: 0 auto;
 	clear: both;
-	width: 100%;b
-er:eleltabl
+	width: 100%;
+
 }
 
 table.dataTable thead th {
 	padding: 3px 18px 3px 10px;
-	border-bottom: 1px solid black;
+	
 	font-weight: bold;
 	cursor: pointer;
 	*cursor: hand;
-    background-color:#2FAEC4;
+    
     color:white;
+    text-align:center;
 }
 
 table.dataTable tfoot th {
@@ -62,6 +63,8 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
  */
 .dataTables_length {
 	float: left;
+    padding-left:5px;
+    padding-top:3px;
    
 }
 
@@ -72,6 +75,9 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 .dataTables_filter {
 	float: right;
 	text-align: right;
+    padding-right:5px;
+    padding-top:3px;
+    border-radius:5px;
    
 }
 
@@ -82,7 +88,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 .dataTables_info {
 	clear: both;
 	float: left;
-    background-color:#C8D4CC;
+    background-color:none;
 }
 
 
@@ -92,7 +98,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 .dataTables_paginate {
 	float: right;
 	text-align: right;
-    background-color: #1C7383;
+    background-color: #2FAEC4;
 }
 
 /* Two button pagination - previous / next */
@@ -163,11 +169,12 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 	margin: 0 3px;
 	cursor: pointer;
 	*cursor: hand;
-	color: #333 !important;
+	color: white !important;
+    border-color:#2FAEC4;
 }
 
 .paging_full_numbers a.paginate_button {
-	background-color: #ddd;
+	background-color: #2FAEC4;
 }
 
 .paging_full_numbers a.paginate_button:hover {
@@ -237,6 +244,7 @@ tfoot input.search_init {
 	color: #999;
 }
 Label {
-    color:#A6ABAB;
+    color:#858688;
+    font-family:Helvetica;
 }
 

@@ -18,12 +18,11 @@
     
         <fieldset>
             <legend>Nueva clasificacion</legend>
-    <div class="row" style="text-align:center">
-
-            <table align="center">
+ 
+            <table class="tabla">
                 
                 <tr>
-                    <th>
+                    <th class="tdtop">
                         <label>Descripcion</label>
                     </th>
                     <th>
@@ -32,19 +31,12 @@
                     </th>
                 </tr>
                 <tr>
-                    <th colspan="2" align="center">
-                         <button id="btn_guardar" type="button" class="btn btn-primary" >Guardar</button>
+                    <th colspan="2">
+                        <br />
+                         <button id="btn_guardar" class="btn btn-primary" class="boton" >Guardar</button>
                     </th>
                 </tr>
-                <tr>
-                    <th colspan="2" align="center">
-                         <%: Html.ActionLink("Regresar a la lista", "ListaClasificacion") %>
-                    </th>
-                </tr>
-            </table>
-    </div>   
-              
-           
+              </table>
         </fieldset>
     <% } %>
     

@@ -9,21 +9,15 @@
     <title>ListaGrupos</title>
 </head>
 <body>
-     <label>Nueva   </label>  <a href="/Delitos/NuevoGrupo" class="ajax fa fa-plus-square fa-2x">
-                       </a>
-   <table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
+     
+   <table id="tableOne" class="display t">
     <thead>
         <tr>
-        <th>
-              
-        </th>
-            <th>
-                 
+            <th colspan="3" class="left">
+                <label>Catalago de grupos</label>  <a href="/Delitos/NuevoGrupo" class="ajax fa fa-plus-square href2"></a>
             </th>
-            <th></th>
-       
-    </tr>
-        <tr>
+        </tr>
+        <tr class="tr">
             <th>
                 Descripcion
             </th>
@@ -34,31 +28,22 @@
         </tr>
     </thead>
     <tbody id="contenido">
-        <% foreach (var item in Model) { %>
+    <% foreach (var item in Model) { %>
     <tr>
-        
-       
         <td>
             <%: Html.DisplayFor(modelItem => item.Descripcion) %>
         </td>
-       
-        
         <td>
             <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
         </td>
         <td width="10%">
-             <%: Html.ActionLink(" ", "EditarGrupo", new {id_grupo=item.Id_Delito2}, new { @class="ajax fa fa-pencil-square-o" }) %> |
-           
-           <%: Html.ActionLink(" ", "DetallesGrupos", new {id_grupo=item.Id_Delito2}, new { @class="ajax fa fa-bars" }) %> |
-           <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar fa fa-trash-o" })%>
+            <%: Html.ActionLink(" ", "EditarGrupo", new {id_grupo=item.Id_Delito2}, new { @class="ajax href fa fa-pencil-square-o" }) %> 
+            <%: Html.ActionLink(" ", "DetallesGrupos", new {id_grupo=item.Id_Delito2}, new { @class="ajax href fa fa-bars" }) %> 
+            <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar href fa fa-trash-o" })%>
         </td>
     </tr>
-<% } %>
+    <% } %>
     </tbody>
-   
-
-
-
 </table>
 
 
@@ -66,25 +51,18 @@
         var asInitVals = new Array();
         $(document).ready(function () {
 
-            $("#Id_Clasificacion").on("change", function () {
-
-
-
-
-            });
             //$(".ajax").colorbox();
-            $(".ajax").on("click", function (e) {
+           /* $(".ajax").on("click", function (e) {
                 e.preventDefault();
                 var o = $(this).parent().parent().get(0);
                 var posicion = tabla.fnGetPosition(o);
               // tabla.fnUpdate('Cambio',posicion,0);
                 console.log(posicion);
-                $.colorbox({ width: 500, height: 400,href:$(this).attr("href")+"&pos="+posicion});
-            });
+                
+            });*/
+            $(".ajax").colorbox({ width: 500, height: 400 });
             var tabla = $('#tableOne').dataTable({
                 "sPaginationType": "full_numbers",
-
-
                 "oLanguage": {
                     "oPaginate": {
                         "sPrevious": "Anterior",
@@ -117,12 +95,10 @@
                     "bServerSide": true,
                 }
             });
-            $("tfoot input").keyup(function () {
+            $("tfoot input").on("keyup", function () {
                 /* Filter on the column (the index) of this element */
                 tabla.fnFilter(this.value, $("tfoot input").index(this));
             });
-
-
 
             /*
              * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
@@ -131,15 +107,15 @@
             $("tfoot input").each(function (i) {
                 asInitVals[i] = this.value;
             });
-
-            $("tfoot input").focus(function () {
+            
+            $("tfoot input").on("focus", function () {
                 if (this.className == "search_init") {
                     this.className = "";
                     this.value = "";
                 }
             });
 
-            $("tfoot input").blur(function (i) {
+            $("tfoot input").on("blur", function (i) {
                 if (this.value == "") {
                     this.className = "search_init";
                     this.value = asInitVals[$("tfoot input").index(this)];
@@ -148,7 +124,6 @@
             console.log(tabla);
 
             $(".eliminar").on("click", function (e) {
-
                 e.preventDefault();
                 var eliminar = this;
                 console.log($(this).parent().get(0));
@@ -161,31 +136,21 @@
                         type: "GET",
                         datatype: "json",
                         url: url,
-
                         success: function (result) {
                             if (result.Exito == true) {
                                 tabla.fnDeleteRow(aPos[0]);
                                 alert('Registro elimado correctamente');
                                 var t = $("#tableOne").dataTable();
-
                             }
                             else {
                                 alert("'Error" + Mensaje + "'");
-
-
                             }
-
                         }
-
                     });
-
                 }
                 else {
                     return false;
                 }
-
-
-
             });
 
         });

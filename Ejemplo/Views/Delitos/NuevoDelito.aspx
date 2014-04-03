@@ -21,67 +21,60 @@
         <%: Html.ValidationSummary(true) %>
     
         <fieldset>
-            <legend>Nuevo delito</legend>
-    <div class="row" style="text-align:center">
+        <legend>Nuevo delito</legend>
 
-            <table align="center">
-                <tr>
-                 <th>
+        <table class="tabla">
+            <tr>
+                <th>
                       <label >Clasificacion</label>
-                 </th>
-             <th>
-                   <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
-                   <%: Html.DropDownList("Id_Clasificacion", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---")%>
+                </th>
+                <th>
+                    <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
+                    <%: Html.DropDownList("Id_Clasificacion", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---")%>
                    
-                  </th>
+                </th>
             </tr>
-                <tr>
-                    <th>
-                        <label>Grupo</label>
-                    </th>
-                    <th>
-                       <select id="id_Grupo" name="Id_Grupo">
-                              <option value="0">---Seleccione---</option>
-                        </select>
+            <tr>
+                <th>
+                    <label>Grupo</label>
+                </th>
+                <th>
+                    <select id="id_Grupo" name="Id_Grupo">
+                        <option value="0">---Seleccione---</option>
+                        
+                    </select>
 
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <label>Descripcion</label>
-                    </th>
-                    <th>
-                        <%: Html.TextAreaFor(model => model.Descripcion) %>
-                         <%: Html.ValidationMessageFor(model => model.Descripcion) %>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <label>Gravedad</label>
-                    </th>
-                    <th>
-                        <select id="Gravedad" name="Gravedad">
-                            <option value="0">--Seleccione---</option>
-                            <option value="1">Si</option>
-                             <option value="2">No</option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    
-                    <th colspan="2">
-                         <input id="btn_guardar" type="submit" class="btn btn-primary" value="GUARDAR" />
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="2">
-                         <%: Html.ActionLink("Regresar a la lista", "IndexDelitos") %>
-                    </th>
-                </tr>
+                 </th>
+             </tr>
+             <tr>
+                 <th class="tdtop">
+                     <label>Descripcion</label>
+                 </th>
+                 <th>
+                      <%: Html.TextAreaFor(model => model.Descripcion) %>
+                      <%: Html.ValidationMessageFor(model => model.Descripcion) %>
+                 </th>
+              </tr>
+              <tr>
+                 <th>
+                      <label>Gravedad</label>
+                 </th>
+                 <th>
+                      <select id="Gravedad" name="Gravedad">
+                         <option value="0">--Seleccione---</option>
+                         <option value="1">Si</option>
+                         <option value="2">No</option>
+                      </select>
+                 </th>
+               </tr>
+               <tr>
+                 <th colspan="2">
+                      <br />
+                      <input id="btn_guardar" type="submit" class="btn btn-primary" value="GUARDAR" />
+                 </th>
+               </tr>
+                
             </table>
-    </div>   
-              
-           
         </fieldset>
     <% } %>
     

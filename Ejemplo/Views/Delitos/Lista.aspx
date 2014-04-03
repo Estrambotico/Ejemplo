@@ -13,6 +13,7 @@
                  }
              });
 
+
              $("#Id_Clasificacion1").on("change", function () {
                  var cla = $("#Id_Clasificacion1").val();
                  
@@ -51,27 +52,19 @@
                  }
              });
          }
-      
-         
-         
          
         </script>
 
     <div class="container">
+           
+        <h2>Lista de grupos</h2>
+        <label>CLASIFICACIONES: </label>
+        <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
+        <%: Html.DropDownList("Id_Clasificacion1", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---", new{ @class="selectpicker" })%>
 
+        <div id="div_tabla" class="t">
 
-
-
-   
-<h2>Lista de grupos</h2>
-    <label>CLASIFICACIONES: </label>
-    <% var etapas = ViewData["Cla"] as List<Ejemplo.Models.Ca_Delitos>;  %>
-     <%: Html.DropDownList("Id_Clasificacion1", new SelectList(etapas, "Id_Clasificacion", "Descripcion"), "---Seleccione---", new{ @class="selectpicker" })%>
-
-
-    <div id="div_tabla">
-
-    </div>
+        </div>
 
    </div>
 

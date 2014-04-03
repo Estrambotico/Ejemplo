@@ -10,7 +10,7 @@
     <title>EditarDelito</title>
 </head>
 <body>
-    <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>"></script>
+    
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"></script>
      <script src="../../Scripts/DataTable/jquery.dataTables.js"></script>
@@ -21,15 +21,10 @@
     
         <fieldset>
             <legend>Editar clasificacion</legend>
-    
-              
-            
-            <div class="row" style="text-align:center">
-
-            <table align="center">
+            <table class="tabla">
                  
                 <tr>
-                    <th>
+                    <th class="tdtop">
                         <label>Descripcion</label>
                     </th>
                     <th>
@@ -47,18 +42,12 @@
                 
                 <tr>
                     <th colspan="2">
+                        <br />
                          <button id="btn_guardar" type="button" class="btn btn-primary" >Guardar</button>
                     </th>
                 </tr>
-                <tr>
-                    <th colspan="2">
-                          <%: Html.ActionLink("Regresar a la lista", "IndexDelito") %>
-                    </th>
-                </tr>
             </table>
-    </div>   
-            
-        </fieldset>
+         </fieldset>
     <% } %>
     
     

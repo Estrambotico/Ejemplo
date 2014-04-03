@@ -2,57 +2,49 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container">
+<div class="container">
     
-<h2>ListaClasificacion</h2>
+        <h2>ListaClasificacion</h2>
 
-         <label>Nueva   </label>  <a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square fa-2x">
-                       </a>
-<table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
-    <thead>
-        <tr>
-        <th colspan="3">
-              
-        </th>
-       
-    </tr>
-        <tr>
-            <th>
-                Descripcion
-            </th>
-            <th>
-                Fecha de actualizacion
-            </th>
-            <th width="20%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% foreach (var item in Model) { %>
-    <tr>
-        
-       
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Descripcion) %>
-        </td>
-       
-        
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
-        </td>
-        <td width="10%">
-             <%: Html.ActionLink(" ", "EditarClasificacion", new {Id_Clasi=item.Id_Delito2}, new { @class="ajax fa fa-pencil-square-o" }) %> |
-           
-           <%: Html.ActionLink(" ", "DetallesClasificacion", new {Id_Clasi=item.Id_Delito2}, new { @class="ajax  fa fa-bars" }) %> |
-           <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar  fa fa-trash-o" })%>
-        </td>
-    </tr>
-<% } %>
-    </tbody>
+      <div class="t"> 
+        <table id="tableOne" class="display t" >
+            <thead>
+                <tr>
+                    <th colspan="3" class="left">
+                        <label>Catalogo de clasificaciones   </label>  <a href="/Delitos/NuevaClasificacion" class="ajax fa fa-plus-square href2">
+                           </a>
+                    </th>
+                </tr>
+                <tr class="tr">
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Fecha de actualizacion
+                    </th>
+                    <th width="10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% foreach (var item in Model) { %>
+                <tr>
+                    <td>
+                        <%: Html.DisplayFor(modelItem => item.Descripcion) %>
+                    </td>
+                    <td>
+                        <%: Html.DisplayFor(modelItem => item.Fecha_Act) %>
+                    </td>
+                    <td width="10%">
+                        <%: Html.ActionLink(" ", "EditarClasificacion", new {Id_Clasi=item.Id_Delito2}, new { @class="ajax href fa fa-pencil-square-o" }) %> 
+                        <%: Html.ActionLink(" ", "DetallesClasificacion", new {Id_Clasi=item.Id_Delito2}, new { @class="ajax href  fa fa-bars" }) %> 
+                        <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar href  fa fa-trash-o" })%>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
    
-
-
-
-</table>
+        </table>
+     </div>
 </div>
 
     <script type="text/javascript">
@@ -62,8 +54,6 @@
             var tabla = $('#tableOne').dataTable({
 
                 "sPaginationType": "full_numbers",
-
-
                 "oLanguage": {
                     "oPaginate": {
                         "sPrevious": "Anterior",
@@ -111,14 +101,14 @@
                 asInitVals[i] = this.value;
             });
 
-            $("tfoot input").focus(function () {
+            $("tfoot input").on("focus",function () {
                 if (this.className == "search_init") {
                     this.className = "";
                     this.value = "";
                 }
             });
 
-            $("tfoot input").blur(function (i) {
+            $("tfoot input").on("blur",function (i) {
                 if (this.value == "") {
                     this.className = "search_init";
                     this.value = asInitVals[$("tfoot input").index(this)];
@@ -139,7 +129,6 @@
                         type: "GET",
                         datatype: "json",
                         url: url,
-
                         success: function (result) {
                             if (result.Exito == false) {
                                 alert("'Error" + Mensaje + "'");
@@ -148,8 +137,6 @@
                                 tabla.fnDeleteRow(aPos[0]);
                                 alert('Registro elimado correctamente');
                                 var t = $("#tableOne").dataTable();
-
-
                             }
 
                         }

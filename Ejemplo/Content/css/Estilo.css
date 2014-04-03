@@ -153,7 +153,7 @@ ul {
     text-align:left;
 }
 h2 {
-    color:#C7CACA;
+    color:#858688;
 }
 
 select {
@@ -162,23 +162,88 @@ select {
     border: 1px solid #ccc;
     height: 30px;
     background-color:white;
-    border-radius:3px;
+    border-radius:4px;
     border-color:#D8DCDC;
     width:200px;
-    color:#B5BCBC;
+    color:#868989;
+    -webkit-appearance: none;
+    appearance:none;
 }
 legend {
     font-size:30px;
-    color:#228D8D;
+    color:#0C7597;
     font-weight:bold;
-    text-align:center;
+    text-align:left;
+    text-transform:uppercase;
+    padding-left:30px;
+    padding-top:20px;
 }
 
 textarea {
     width:200px;
     height:100px;
-    color:#C3C8C8;
+    color:#868989;
+    border-radius:5px;
 }
+input {
+    border-radius:4px;
+}
+.href {
+    color:black;
+    font-size:18px;
+    
+}
+.href2 {
+    color:#2FAEC4;
+    font-size:22px;
+    
+}
+.tdtop {
+    vertical-align:text-top;
+}
+
+.tabla  {
+    text-align:center;
+    padding-left:20px;
+    margin-left:25px;
+    font-family:Calibri;
+    border-spacing:10px;
+}
+
+.tabla tbody tr {
+    margin-top:10px;
+}
+
+.boton {
+     font-family:Calibri;
+     color:white;
+     background-color:#00B0CF;
+     text-decoration:none;
+     border-radius:0px;
+     width:100px;
+     height:30px;
+}
+
+.t {
+    border:solid;
+    border-color:#D8DCDC;
+    border-width:1px;
+    margin-top:10px;
+    width:100%;
+    
+}
+
+.left {
+    text-align:left !important;
+}
+
+.tr {
+    background-color:#2FAEC4 !important;
+    color:white;
+}
+
+
+
 
 
    

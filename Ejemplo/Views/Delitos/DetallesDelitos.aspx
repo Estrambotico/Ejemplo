@@ -11,11 +11,10 @@
     <fieldset>
         <legend>Detalles delitos</legend>
     
-         <div class="row" style="text-align:center">
-
-            <table align="center">
+        
+             <table class="tabla">
                 <tr>
-                    <th>
+                    <th class="tdtop">
                         <label>Descripcion</label>
                     </th>
                     <th>
@@ -34,16 +33,9 @@
                         <%: Html.HiddenFor(model => model.Id_Grupo) %>
                         <%: Html.HiddenFor(model => model.Usu_Act) %>
                     </th>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        
-                            <%: Html.ActionLink("Regresar a la lista", "IndexDelitos") %>
-                    </td>
-                </tr>
-               
+                </tr>                
             </table>
-    </div>   
+     
     </fieldset>
     
 </body>

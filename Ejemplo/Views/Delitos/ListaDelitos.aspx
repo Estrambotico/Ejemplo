@@ -9,23 +9,16 @@
    
 </head>
 <body>
-     <label>Nueva   </label>  <a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square fa-2x">
-                       </a>
-   <table id="tableOne" class="display" width="100%" style="margin: 1% auto;">
+     
+   <table id="tableOne" class="display t">
     <thead>
-        <tr>
-        <th>
-             
-        </th>
-            <th>
-                 
-            </th>
-            <th>
-
-            </th>
-       
-    </tr>
-        <tr>
+        <tr >
+            <th colspan="3" class="left" >
+                 <label>Catalogo de delitos   </label>  <a href="/Delitos/NuevoDelito" class="ajax fa fa-plus-square href2">
+                           </a>
+           </th>
+       </tr>
+        <tr class="tr">
             <th>
                 Descripcion
             </th>
@@ -35,13 +28,10 @@
             <th width="10%"></th>
         </tr>
     </thead>
-       <tbody>
-
-     
-    
+     <tbody>
+                  
     <% foreach (var item in Model) { %>
         <tr>
-            
             <td>
                 <%: Html.DisplayFor(modelItem => item.Descripcion) %>
             </td>
@@ -50,10 +40,9 @@
                 <%:((item.Gravedad)==1) ? "Si" : "No" %>
             </td>
            <td width="10%">
-             <%: Html.ActionLink(" ", "EditarDelito", new {id_grupo=item.Id_Delito2}, new { @class="ajax fa fa-pencil-square-o" }) %> |
-           
-           <%: Html.ActionLink(" ", "DetallesDelitos", new {id_grupo=item.Id_Delito2}, new { @class="ajax fa fa-bars" }) %> |
-           <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar fa fa-trash-o" })%>
+                <%: Html.ActionLink(" ", "EditarDelito", new {id_grupo=item.Id_Delito2}, new { @class="ajax href fa fa-pencil-square-o" }) %> 
+                <%: Html.ActionLink(" ", "DetallesDelitos", new {id_grupo=item.Id_Delito2}, new { @class="ajax href fa fa-bars" }) %> 
+                <%: Html.ActionLink(" ", "EliminarClasificacion", new { Id_Clasi = item.Id_Delito2 }, new { @class = "eliminar href fa fa-trash-o" })%>
         </td>
         </tr>
     <% } %>
@@ -62,18 +51,10 @@
     <script type="text/javascript">
         var asInitVals = new Array();
         $(document).ready(function () {
-            $("#Id_Clasificacion").on("change", function () {
-
-
-
-
-            });
+           
             $(".ajax").colorbox({ width: 500, height: 400 });
             var tabla = $('#tableOne').dataTable({
-
                 "sPaginationType": "full_numbers",
-
-
                 "oLanguage": {
                     "oPaginate": {
                         "sPrevious": "Anterior",
@@ -138,7 +119,6 @@
             $(".eliminar").on("click", function (e) {
 
                 e.preventDefault();
-               
                 var eliminar = this;
                 console.log($(this).parent().get(0));
                 var url = $(this).attr('href');
@@ -150,7 +130,6 @@
                         type: "GET",
                         datatype: "json",
                         url: url,
-
                         success: function (result) {
                             if (result.Exito == true) {
                                 tabla.fnDeleteRow(aPos[0]);
@@ -159,7 +138,6 @@
                             }
                             else {
                                 alert("'Error" + Mensaje + "'");
-
 
                             }
 

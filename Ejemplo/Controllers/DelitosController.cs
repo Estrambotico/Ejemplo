@@ -147,10 +147,10 @@ namespace Ejemplo.Controllers
         }
         /*MODIFICAR GRUPO*/
 
-        public ActionResult EditarGrupo(String id_grupo, string pos) {
+        public ActionResult EditarGrupo(String id_grupo) {
             var cla = repo.ListaClasificacion().ToList();
             ViewData["Cla"] = cla;
-            ViewData["posicion"] = pos;
+           
             Ca_Delitos delitos = repo.ObtenerDelito(id_grupo);
 
             return View(delitos);

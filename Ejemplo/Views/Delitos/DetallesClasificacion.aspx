@@ -10,11 +10,9 @@
 <body>
     <fieldset>
         <legend>Detalles clasificacion</legend>
-      <div class="row" style="text-align:center">
-
-            <table align="center">
+              <table class="tabla">
                 <tr>
-                    <th>
+                    <th class="tdtop">
                         <label>Descripcion</label>
                     </th>
                     <th>
@@ -39,7 +37,7 @@
                 </tr>
                
             </table>
-    </div>   
+    
     </fieldset>
     
 </body>
